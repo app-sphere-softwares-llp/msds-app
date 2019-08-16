@@ -14,27 +14,29 @@
                                                                              href="javascript:getPage(2)">Next</a>&nbsp;<a
       name="" class="" href="  javascript:getPage(11)">&gt;&gt;</a><br><br>
       <table width="100%" class="ListGrid Results" id="tlbResults" cellspacing="0" rules="all" border="1">
-        <tbody>
-        <tr class="header">
-          <td width="20%" align="left">
+        <thead>
+        <tr class="">
+          <th width="20%" align="left">
             FMC Business
-          </td>
-          <td width="20%" align="left">
+          </th>
+          <th width="20%" align="left">
             Product ID
-          </td>
-          <td width="25%" align="left">
+          </th>
+          <th width="25%" align="left">
             Product Name
-          </td>
-          <td width="15%" align="left">
+          </th>
+          <th width="15%" align="left">
             Sub Format
-          </td>
-          <td width="10%" align="left">
+          </th>
+          <th width="10%" align="left">
             Language
-          </td>
-          <td width="10%" align="left">
+          </th>
+          <th width="10%" align="left">
             Revision Date
-          </td>
+          </th>
         </tr>
+        </thead>
+        <tbody>
 
         <tr class="altitem" *ngFor="let item of items;let i = index">
           <td>{{ i + 1}}. {{ item.FMCBusiness }}</td>
