@@ -1,0 +1,57 @@
+<table id="ctlMasterPage_tableContent" border="0" style="width:100%;" class="table table-striped">
+  <tbody>
+  <tr>
+    <td id="ctlMasterPage_pageContent">
+      <a name="" class="" href="javascript:void 0" [routerLink]="['/search']">Back To Search</a>
+      <br>Total results : 3000<br>1 <a name="" class="" href="  javascript:getPage(2)">2</a>
+      <a name=""
+         class=""
+         href="  javascript:getPage(3)">3</a>
+      <a name="" class="" href="  javascript:getPage(4)">4</a> <a name="" class="" href="  javascript:getPage(5)">5</a>
+      <a name="" class="" href="  javascript:getPage(6)">6</a> <a name="" class="" href="  javascript:getPage(7)">7</a>
+      <a name="" class="" href="  javascript:getPage(8)">8</a> <a name="" class="" href="  javascript:getPage(9)">9</a>
+      <a name="" class="" href="  javascript:getPage(10)">10</a> ...&nbsp;<a name="" class=""
+                                                                             href="javascript:getPage(2)">Next</a>&nbsp;<a
+      name="" class="" href="  javascript:getPage(11)">&gt;&gt;</a><br><br>
+      <table width="100%" class="ListGrid Results" id="tlbResults" cellspacing="0" rules="all" border="1">
+        <tbody>
+        <tr class="header">
+          <td width="20%" align="left">
+            FMC Business
+          </td>
+          <td width="20%" align="left">
+            Product ID
+          </td>
+          <td width="25%" align="left">
+            Product Name
+          </td>
+          <td width="15%" align="left">
+            Sub Format
+          </td>
+          <td width="10%" align="left">
+            Language
+          </td>
+          <td width="10%" align="left">
+            Revision Date
+          </td>
+        </tr>
+
+        <tr class="altitem" *ngFor="let item of items;let i = index">
+          <td>{{ i + 1}}. {{ item.FMCBusiness }}</td>
+          <td>
+            <a name="" class=""
+               href="javascript:getDocument('document','001-ST-A~~PDF~~MTR~~AGHS~~EN~~2016-02-18 13:42:38~~EQUASTAN 5 FS SEED TREATMENT~~','inPage')">
+              001-ST-A</a>
+          </td>
+          <td>{{ item.ProductName }}</td>
+          <td>{{ item.WercsSubFormat }}</td>
+          <td>{{ item.Language }}</td>
+          <td>{{ item.RevisionDate }}</td>
+        </tr>
+
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>

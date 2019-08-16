@@ -1,0 +1,29 @@
+export class ListModelItem {
+  PDFName: string;
+  SpecificationID: string;
+  Language: string;
+  GENVARIANT: string;
+  ProductName: string;
+  ChemicalName: string;
+  CommonName: string;
+  TradeName: string;
+  CasNumber: string;
+  CommercialNames: string;
+  CMR: string;
+  PublishDate: string;
+  ActiveVersion: string;
+  IUPAC: string;
+  INCODE: string;
+  EHSVersionNo: string;
+  FMCBusiness: string;
+  FileFormat: string;
+  ValidityArea: string;
+  ValidityAreaDescription: string;
+  LegacySpecID: string;
+  LegacySDSID: string;
+  RevisionDate: string;
+  WercsRevisionNo: string;
+  WercsSubFormat: string;
+  AuthorizedPortal: string;
+  Path: string;
+}
