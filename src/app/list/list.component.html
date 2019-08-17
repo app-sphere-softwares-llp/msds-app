@@ -1,69 +1,114 @@
-<table id="ctlMasterPage_tableContent" border="0" style="width:100%;" class="table table-striped">
-  <tbody>
-  <tr>
-    <td id="ctlMasterPage_pageContent">
-      <a name="" class="" href="javascript:void 0" [routerLink]="['/search']">Back To Search</a>
-<!--      <br>Total results : 3000<br>1 <a name="" class="" href="  javascript:getPage(2)">2</a>-->
-<!--      <a name=""-->
-<!--         class=""-->
-<!--         href="  javascript:getPage(3)">3</a>-->
-<!--      <a name="" class="" href="  javascript:getPage(4)">4</a> <a name="" class="" href="  javascript:getPage(5)">5</a>-->
-<!--      <a name="" class="" href="  javascript:getPage(6)">6</a> <a name="" class="" href="  javascript:getPage(7)">7</a>-->
-<!--      <a name="" class="" href="  javascript:getPage(8)">8</a> <a name="" class="" href="  javascript:getPage(9)">9</a>-->
-<!--      <a name="" class="" href="  javascript:getPage(10)">10</a> ...&nbsp;<a name="" class=""-->
-<!--                                                                             href="javascript:getPage(2)">Next</a>&nbsp;<a-->
-<!--      name="" class="" href="  javascript:getPage(11)">&gt;&gt;</a><br><br>-->
-      <table width="100%" class="ListGrid Results" id="tlbResults" cellspacing="0" rules="all" border="1">
-        <thead>
-        <tr class="">
-          <th width="20%" align="left">
-            FMC Business
-          </th>
-          <th width="20%" align="left">
-            Product ID
-          </th>
-          <th width="25%" align="left">
-            Product Name
-          </th>
-          <th width="15%" align="left">
-            Sub Format
-          </th>
-          <th width="10%" align="left">
-            Language
-          </th>
-          <th width="10%" align="left">
-            Revision Date
-          </th>
-        </tr>
-        </thead>
-        <tbody>
+<ng-sidebar-container
+        (onBackdropClicked)="_onBackdropClicked()" style="height: 100vh;">
+      <ng-sidebar
+        [(opened)]="_opened"
+        [mode]="_MODES[_modeNum]"
+        [keyClose]="_keyClose"
+        [position]="_POSITIONS[_positionNum]"
+        [dock]="_dock"
+        [dockedSize]="'50px'"
+        [autoCollapseHeight]="_autoCollapseHeight"
+        [autoCollapseWidth]="_autoCollapseWidth"
+        [closeOnClickOutside]="_closeOnClickOutside"
+        [closeOnClickBackdrop]="_closeOnClickBackdrop"
+        [showBackdrop]="_showBackdrop"
+        [animate]="_animate"
+        [trapFocus]="_trapFocus"
+        [autoFocus]="_autoFocus"
+        [sidebarClass]="'demo-sidebar'"
+        [ariaLabel]="'My sidebar'"
+        (onOpenStart)="_onOpenStart()"
+        (onOpened)="_onOpened()"
+        (onCloseStart)="_onCloseStart()"
+        (onClosed)="_onClosed()"
+        (onTransitionEnd)="_onTransitionEnd()">
+        <p>Sidebar contents</p>
+        <button class="demo-control" (click)="_toggleOpened()">Close sidebar</button>
+        <p><a closeSidebar>This will close the sidebar too</a></p>
+        <hr>
+        <p>Throwup on your pillow.</p>
+        <p>Steal the warm chair right after you get up.</p>
+        <p>Use lap as chair hide head under blanket.</p>
+        <p>Walk on car leaving trail of paw prints on hood.</p>
+        <p>Steal the warm chair right after you get up.</p>
+      </ng-sidebar>
+      <div ng-sidebar-content style="padding: 5px">
+        <header class="demo-header">
+           
+          <button (click)="_toggleOpened()" class=" btn"> <fa-icon [icon]="faBars"></fa-icon></button>
+          <span>Results</span>
+        </header>
+        <section class="demo-contents">
+         
+      
+          <table id="ctlMasterPage_tableContent" border="0" style="width:100%;" class="table">
+            <tbody>
+            <tr>
+              <td id="ctlMasterPage_pageContent">
+                <a name="" class="" href="javascript:void 0" [routerLink]="['/search']">Back To Search</a>
+                <span style="float: right;font-weight: 800">Total Results: </span>
+                <table width="100%" class="ListGrid Results" id="tlbResults" cellspacing="0" rules="all" border="1">
+                  <thead>
+                  <tr class="">
+                    <th width="15%" align="left">
+                      FMC Business
+                    </th>
+                    <th width="20%" align="left">
+                      Product ID
+                    </th>
+                    <th width="25%" align="left">
+                      Product Name
+                    </th>
+                    <th width="15%" align="left">
+                      Sub Format
+                    </th>
+                    <th width="10%" align="left">
+                      Language
+                    </th>
+                    <th width="15%" align="left">
+                      Revision Date
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+          
+                  <tr class="altitem" *ngFor="let item of filteredItems;let i = index">
+                    <td>{{ item.FMCBusiness }}</td>
+                    <td>
+                      <a name="" class=""
+                         href="javascript:getDocument('document','001-ST-A~~PDF~~MTR~~AGHS~~EN~~2016-02-18 13:42:38~~EQUASTAN 5 FS SEED TREATMENT~~','inPage')">
+                        001-ST-A</a>
+                    </td>
+                    <td>{{ item.ProductName }}</td>
+                    <td>{{ item.WercsSubFormat }}</td>
+                    <td>{{ item.Language }}</td>
+                    <td>{{ item.RevisionDate }}</td>
+                  </tr>
+          
+                  </tbody>
+          
+                  <tfoot style="text-align: center">
+          
+                  <pagination
+                    [itemsPerPage]="25"
+                    [totalItems]="items.length"
+                    (pageChanged)="pageChanged($event)" style="padding: 5px"
+                  ></pagination>
+          
+                  </tfoot>
+                </table>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </ng-sidebar-container>
 
-        <tr class="altitem" *ngFor="let item of filteredItems;let i = index">
-          <td>{{ i + 1}}. {{ item.FMCBusiness }}</td>
-          <td>
-            <a name="" class=""
-               href="javascript:getDocument('document','001-ST-A~~PDF~~MTR~~AGHS~~EN~~2016-02-18 13:42:38~~EQUASTAN 5 FS SEED TREATMENT~~','inPage')">
-              001-ST-A</a>
-          </td>
-          <td>{{ item.ProductName }}</td>
-          <td>{{ item.WercsSubFormat }}</td>
-          <td>{{ item.Language }}</td>
-          <td>{{ item.RevisionDate }}</td>
-        </tr>
 
-        </tbody>
 
-        <tfoot>
 
-        <pagination
-          [itemsPerPage]="10"
-          [totalItems]="items.length"
-          (pageChanged)="pageChanged($event)"
-        ></pagination>
 
-        </tfoot>
-      </table>
-    </td>
-  </tr>
-  </tbody>
-</table>
+
+
+
