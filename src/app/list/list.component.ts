@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ListModelItem} from '../models/listModel';
 import {mockData} from '../models/mockdata';
-import {PageChangedEvent} from 'ngx-bootstrap';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import {BsModalRef, BsModalService, PageChangedEvent} from 'ngx-bootstrap';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
+import {ItemDetailsComponent} from '../item-details/item-details.component';
 
 @Component({
   selector: 'app-list',
@@ -10,12 +11,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
+  bsModalRef: BsModalRef;
   faBars = faBars;
   public items: ListModelItem[] = mockData;
   public filteredItems: ListModelItem[] = [];
 
-  constructor() {
+  constructor(private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -26,6 +27,11 @@ export class ListComponent implements OnInit {
     const startIndex = (event.page - 1) * 10;
     const endIndex = Math.min(startIndex + 10 - 1, this.items.length - 1);
     this.filteredItems = this.items.slice(startIndex, endIndex + 1);
+  }
+
+  openModal(item: ListModelItem) {
+    this.bsModalRef = this.modalService.show(ItemDetailsComponent, {class: 'modal-lg'});
+    this.bsModalRef.content.title = item.ProductName;
   }
 
   private _opened: boolean = false;

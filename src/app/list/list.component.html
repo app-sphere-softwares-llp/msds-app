@@ -34,13 +34,13 @@
       </ng-sidebar>
       <div ng-sidebar-content style="padding: 5px">
         <header class="demo-header">
-           
+
           <button (click)="_toggleOpened()" class=" btn"> <fa-icon [icon]="faBars"></fa-icon></button>
           <span>Results</span>
         </header>
         <section class="demo-contents">
-         
-      
+
+
           <table id="ctlMasterPage_tableContent" border="0" style="width:100%;" class="table">
             <tbody>
             <tr>
@@ -71,30 +71,28 @@
                   </tr>
                   </thead>
                   <tbody>
-          
+
                   <tr class="altitem" *ngFor="let item of filteredItems;let i = index">
                     <td>{{ item.FMCBusiness }}</td>
                     <td>
-                      <a name="" class=""
-                         href="javascript:getDocument('document','001-ST-A~~PDF~~MTR~~AGHS~~EN~~2016-02-18 13:42:38~~EQUASTAN 5 FS SEED TREATMENT~~','inPage')">
-                        001-ST-A</a>
+                      <a href="javascript: void 0" (click)="openModal(item)">001-ST-A</a>
                     </td>
                     <td>{{ item.ProductName }}</td>
                     <td>{{ item.WercsSubFormat }}</td>
                     <td>{{ item.Language }}</td>
                     <td>{{ item.RevisionDate }}</td>
                   </tr>
-          
+
                   </tbody>
-          
+
                   <tfoot style="text-align: center">
-          
+
                   <pagination
                     [itemsPerPage]="25"
                     [totalItems]="items.length"
                     (pageChanged)="pageChanged($event)" style="padding: 5px"
                   ></pagination>
-          
+
                   </tfoot>
                 </table>
               </td>
