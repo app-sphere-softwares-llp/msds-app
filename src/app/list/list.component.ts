@@ -24,8 +24,8 @@ export class ListComponent implements OnInit {
   }
 
   pageChanged(event: PageChangedEvent) {
-    const startIndex = (event.page - 1) * 10;
-    const endIndex = Math.min(startIndex + 10 - 1, this.items.length - 1);
+    const startIndex = (event.page - 1) * 20;
+    const endIndex = Math.min(startIndex + 20 - 1, this.items.length - 1);
     this.filteredItems = this.items.slice(startIndex, endIndex + 1);
   }
 
