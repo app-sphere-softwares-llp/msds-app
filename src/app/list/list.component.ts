@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ListModelItem} from '../models/listModel';
 import {mockData} from '../models/mockdata';
 import {BsModalRef, BsModalService, PageChangedEvent} from 'ngx-bootstrap';
-import {faBars} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {ItemDetailsComponent} from '../item-details/item-details.component';
 
 @Component({
@@ -13,6 +13,7 @@ import {ItemDetailsComponent} from '../item-details/item-details.component';
 export class ListComponent implements OnInit {
   bsModalRef: BsModalRef;
   faBars = faBars;
+  faArrowLeft = faArrowLeft;
   public items: ListModelItem[] = mockData;
   public filteredItems: ListModelItem[] = [];
 

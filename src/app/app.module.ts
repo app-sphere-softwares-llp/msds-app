@@ -12,6 +12,7 @@ import {SidebarModule} from 'ng-sidebar';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ItemDetailsComponent} from './item-details/item-details.component';
 import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
     SearchComponent,
     ListComponent,
     HeaderComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

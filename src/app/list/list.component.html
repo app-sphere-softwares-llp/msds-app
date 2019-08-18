@@ -22,32 +22,43 @@
         (onCloseStart)="_onCloseStart()"
         (onClosed)="_onClosed()"
         (onTransitionEnd)="_onTransitionEnd()">
-        <p>Sidebar contents</p>
-        <button class="demo-control" (click)="_toggleOpened()">Close sidebar</button>
-        <p><a closeSidebar>This will close the sidebar too</a></p>
-        <hr>
-        <p>Throwup on your pillow.</p>
-        <p>Steal the warm chair right after you get up.</p>
-        <p>Use lap as chair hide head under blanket.</p>
-        <p>Walk on car leaving trail of paw prints on hood.</p>
-        <p>Steal the warm chair right after you get up.</p>
+
+<!--        <button class="demo-control" (click)="_toggleOpened()">Close sidebar</button>-->
+<!--        <p><a closeSidebar>This will close the sidebar too</a></p>-->
+
+    <app-filter></app-filter>
+
+
       </ng-sidebar>
-      <div ng-sidebar-content style="padding: 5px">
+      <div ng-sidebar-content>
         <header class="demo-header">
+          <div class="row">
+            <div class="col-4">
+              <button (click)="_toggleOpened()" class="btn"> <fa-icon [icon]="faBars"></fa-icon>
+                <span>&ensp;Results</span>
+              </button>
 
-          <button (click)="_toggleOpened()" class=" btn"> <fa-icon [icon]="faBars"></fa-icon></button>
-          <span>Results</span>
+            </div>
+            <div class="col-8 text-right">
+              <div class="result-count ">
+                <a name="" class="mr-1" href="javascript:void 0" [routerLink]="['/search']"><fa-icon [icon]="faArrowLeft"></fa-icon> Back To Search</a>
+                <span  *ngIf="filteredItems && filteredItems.length" class="uppercase">Total Results: {{filteredItems.length}}</span></div>
+            </div>
+          </div>
+
         </header>
-        <section class="demo-contents">
+        <section class="table-contents">
 
-
-          <table id="ctlMasterPage_tableContent" border="0" style="width:100%;" class="table">
-            <tbody>
-            <tr>
-              <td id="ctlMasterPage_pageContent">
-                <a name="" class="" href="javascript:void 0" [routerLink]="['/search']">Back To Search</a>
-                <span style="float: right;font-weight: 800">Total Results: </span>
                 <table width="100%" class="ListGrid Results" id="tlbResults" cellspacing="0" rules="all" border="1">
+                  <thead>
+
+                  <pagination
+                    [itemsPerPage]="25"
+                    [totalItems]="items.length"
+                    (pageChanged)="pageChanged($event)"
+                  ></pagination>
+
+                  </thead>
                   <thead>
                   <tr class="">
                     <th width="15%" align="left">
@@ -56,16 +67,16 @@
                     <th width="20%" align="left">
                       Product ID
                     </th>
-                    <th width="25%" align="left">
+                    <th width="30%" align="left">
                       Product Name
                     </th>
                     <th width="15%" align="left">
                       Sub Format
                     </th>
-                    <th width="10%" align="left">
+                    <th width="10%" class="text-center">
                       Language
                     </th>
-                    <th width="15%" align="left">
+                    <th width="10%" class="text-center">
                       Revision Date
                     </th>
                   </tr>
@@ -79,26 +90,23 @@
                     </td>
                     <td>{{ item.ProductName }}</td>
                     <td>{{ item.WercsSubFormat }}</td>
-                    <td>{{ item.Language }}</td>
-                    <td>{{ item.RevisionDate }}</td>
+                    <td class="text-center">{{ item.Language }}</td>
+                    <td class="text-center">{{ item.RevisionDate }}</td>
                   </tr>
 
                   </tbody>
 
-                  <tfoot style="text-align: center">
+                  <tfoot>
 
-                  <pagination
-                    [itemsPerPage]="25"
-                    [totalItems]="items.length"
-                    (pageChanged)="pageChanged($event)" style="padding: 5px"
-                  ></pagination>
+                    <pagination
+                      [itemsPerPage]="25"
+                      [totalItems]="items.length"
+                      (pageChanged)="pageChanged($event)"
+                    ></pagination>
+
 
                   </tfoot>
                 </table>
-              </td>
-            </tr>
-            </tbody>
-          </table>
         </section>
       </div>
     </ng-sidebar-container>

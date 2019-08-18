@@ -1,0 +1,20 @@
+button.close {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  -webkit-appearance: none;
+  top: -20px;
+  RIGHT: -20PX;
+  COLOR: white;
+  Z-INDEX: 1;
+  OPACITY: inherit;
+  border-radius: 25px;
+  font-size: 18px;
+  height: 30px;
+  width: 30px;
+  background: #ff6f5e;
+  text-shadow: none;
+}
+button.close:hover{
+  OPACITY: inherit;
+}

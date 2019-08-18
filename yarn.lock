@@ -675,6 +675,11 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+angular-fontawesome@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/angular-fontawesome/-/angular-fontawesome-1.0.0.tgz#5d1dafb9cbc88ec7210a018020711b3238b5f79e"
+  integrity sha1-XR2vucvIjschCgGAIHEbMji1954=
+
 ansi-colors@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
@@ -4451,10 +4456,10 @@ ng2-daterangepicker@^2.0.12:
   dependencies:
     bootstrap-daterangepicker "^2.1.25"
 
-ng2-pdfjs-viewer@3.2.9:
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/ng2-pdfjs-viewer/-/ng2-pdfjs-viewer-3.2.9.tgz#779c464bb157de3dacbcdeccdfe1b35ad81f125c"
-  integrity sha512-lGzHSGVv3fwVfCXFAoyWAstqovMnipOySicFB2pfYmzJqHGkIJkgQ+am/wcHC7LnUkrL9ZgE8IrfdUPMxvtHww==
+ng2-pdfjs-viewer@^3.2.9:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/ng2-pdfjs-viewer/-/ng2-pdfjs-viewer-3.5.1.tgz#be6bd966e2ac62a77d4a33a130e48c520bcf0aef"
+  integrity sha512-gcBLt7kNdvY4fkl2zDWgz9y27eW1XxsB9cbf2Yvio9hadcbbsf3JZKrXnoOfeJlYZUKf/oASV6QJmPeZAgJq3w==
 
 ngx-bootstrap@^5.1.1:
   version "5.1.1"
