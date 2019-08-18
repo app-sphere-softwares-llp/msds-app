@@ -81,7 +81,7 @@ hr{
 
 td , th{
   font-size: 16px;
-  padding: 0px 5px;
+  padding: 2px 5px;
   border: 1px solid #bfbfbf;
   font-size: 14px;
 }
@@ -90,7 +90,7 @@ table th {
   color: #ffffff;
   border-bottom-color: #ff6f5e;
   border-top-color: #ff6f5e;
-  padding: 1px 6px;
+  padding: 3px 6px;
   font-weight: bold;
 }
 
@@ -210,11 +210,12 @@ a.linkbutton a:hover{
 }
 
 .modal-content{
-  height: 100vh;
+  height: calc(100vh - 70px);
 }
 .modal-content{
   min-width: 600px!important;
 }
-iframe{
-  border:none;
+iframe {
+  border: none;
+  height: calc(100vh - 70px);
 }
