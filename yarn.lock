@@ -4456,10 +4456,10 @@ ng2-daterangepicker@^2.0.12:
   dependencies:
     bootstrap-daterangepicker "^2.1.25"
 
-ng2-pdfjs-viewer@^3.2.9:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/ng2-pdfjs-viewer/-/ng2-pdfjs-viewer-3.5.1.tgz#be6bd966e2ac62a77d4a33a130e48c520bcf0aef"
-  integrity sha512-gcBLt7kNdvY4fkl2zDWgz9y27eW1XxsB9cbf2Yvio9hadcbbsf3JZKrXnoOfeJlYZUKf/oASV6QJmPeZAgJq3w==
+ng2-pdfjs-viewer@5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/ng2-pdfjs-viewer/-/ng2-pdfjs-viewer-5.0.1.tgz#5eaf0ae7b2589db9eeac5db3c8520caf775a9ed9"
+  integrity sha512-Yt2uX4Gl9RDWuEsK4/YIJF/umJNevDNWeeXwYRfgicQQzU+sL15tFhaQiU49shN6H4ByFikRSR0+YWcniPC2Ww==
 
 ngx-bootstrap@^5.1.1:
   version "5.1.1"

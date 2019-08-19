@@ -13,6 +13,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ItemDetailsComponent} from './item-details/item-details.component';
 import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
 import { FilterComponent } from './filter/filter.component';
+import {Daterangepicker} from "ng2-daterangepicker";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FilterComponent } from './filter/filter.component';
     PaginationModule.forRoot(),
     SidebarModule.forRoot(),
     ModalModule.forRoot(),
-    PdfJsViewerModule
+    PdfJsViewerModule,
+    Daterangepicker
   ],
   providers: [],
   bootstrap: [AppComponent],

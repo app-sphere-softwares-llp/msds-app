@@ -1,5 +1,5 @@
 .filter-container{
-  padding-bottom: 100px;
+  padding-bottom: 10px;
 }
 .filter-content{
  padding: 0px 10px;
@@ -7,7 +7,7 @@
 .or-sections{
   background: #e0e2e2;
 }
-.header{
+h4.header{
   padding: 12px 10px 11px;
   background-color: #ff6f5e;
   color: #ffffff;
@@ -15,6 +15,14 @@
   text-transform: uppercase;
   font-weight: bold;
   box-shadow: 2px 2px 2px #d0d0d0;
+}
+h5.header{
+  padding: 6px 10px 5px;
+  background-color: #ebecec;
+  margin: 10px 0px 0px 0px;
+  color: #ff6f5e;
+  font-size: 12px;
+  font-weight: bold;
 }
 label {
   display: inline-block;
