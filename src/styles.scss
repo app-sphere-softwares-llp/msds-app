@@ -3,25 +3,72 @@
 /************************************************\
 	Global TAG styles
 \************************************************/
+
+/* latin-ext */
 @font-face {
-  font-family: lato;
-  src: url(assets/Lato-Bold.ttf) format("truetype");
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Regular'), local('Lato-Thin'), url(assets/Lato-Thin.ttf) format('truetype');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Regular'), local('Lato-Thin'), url(assets/Lato-Thin.ttf) format('truetype');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-td , th{
-  font-size: 16px;
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(assets/Lato-Regular.ttf) format('truetype');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(assets/Lato-Regular.ttf) format('truetype');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(assets/Lato-Bold.ttf) format('truetype');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(assets/Lato-Bold.ttf) format('truetype');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+*{
+  outline: none!important;
 }
 body{
+  font-family: Lato;
   margin: 0px;
 }
 body.help{
   margin: 6px;
 }
 a{
-  color: #336699;
+  color: #36a1e9;
 }
 a:hover{
-  color: #000000;
+  color: #2a8cce;
 }
 h1{ margin-top: 0px; margin-bottom: 0px; }
 h2{ margin-top: 0px; margin-bottom: 0px; }
@@ -32,11 +79,20 @@ hr{
   color: #336699;
 }
 
-
-/************************************************\
-	Help file styles
-\************************************************/
-
+td , th{
+  font-size: 16px;
+  padding: 2px 5px;
+  border: 1px solid #bfbfbf;
+  font-size: 14px;
+}
+table th {
+  background: #ff6f5e;
+  color: #ffffff;
+  border-bottom-color: #ff6f5e;
+  border-top-color: #ff6f5e;
+  padding: 3px 6px;
+  font-weight: bold;
+}
 
 /************************************************\
 	General pattern styles
@@ -66,54 +122,11 @@ hr{
   color:Red;
 }
 
-// table.border{
-//   border: solid 1px #336699;
-//   padding: 10px;
-// }
-
-// table.header{
-//   border: solid 1px #336699;
-//   padding: 10px;
-//   background-color: #336699;
-//   color:White;
-// }
-
-// table.box
-// {
-//   padding:5px 10px 0;
-//   border:1px solid #eee;
-//   background-color:#F7F7F7;
-// }
 
 .item{ background-color: #ffffff;vertical-align:top;  }
 .altitem{vertical-align:top;}
 .selected{ background-color: #99ccff; }
 .error{ color: #ff0000; font-weight: bold; }
-
-// table.listgrid {
-//   border-style:none;
-// }
-
-// table.listgrid td{
-//   padding: 2px 3px;
-//   border-style:none;
-// }
-// table.listgrid, table.listgrid td{
-//   border-color: #336699;
-// }
-
-// table.listgrid .header{
-//   background-color: #336699;
-//   color: #ffffff;
-//   font-weight: bold;
-//   text-align: center;
-// }
-
-// table.listgrid .header td{ padding: 3px 4px; }
-// table.listgrid .header th{ white-space:nowrap; }
-// table.listgrid .pager span{ font-weight: bold; }
-// table.listgrid .pager a, table.listgrid .pager span{ text-decoration: none; }
-// table.listgrid .footer{ background-color: #99ccff; }
 
 a.linkbutton
 {
@@ -132,36 +145,80 @@ a.linkbutton a:hover{
   background-color: #bbbbbb;
 }
 
-// tr.header th.sortedasc
-// {
-//   background-image:url(./assets/sort_asc.png);
-//   background-repeat:no-repeat;
-//   background-position:left;
-//   padding-left:20px;
-// }
-
-// tr.header th.sorteddsc
-// {
-//   background-image:url(./assets/sort_desc.png);
-//   background-repeat:no-repeat;
-//   background-position:left;
-//   padding-left:20px;
-// }
-
 .hover
 {
   cursor:pointer;
 }
 
-/*
-Remove comment if column scrolling is required.
-.item td{ white-space:nowrap; }
-.altitem td{ white-space:nowrap; }
-*/
-
 .ng-sidebar {
-  border: 1px #f8f7f3 solid;
-  padding-left: 10px;
-  padding-right: 10px;
-  width:20%;
+  border-right: 1px #f8f7f3 solid;
+  width:320px;
+}
+.uppercase{
+  text-transform: uppercase;
+}
+
+/* Bootstrap */
+.text-primary{
+  color: #ff6f5e!important;
+}
+.btn:focus{
+    box-shadow: none!important;
+}
+.btn-primary{
+  background-color: #ff6f5e;
+  border-color: #ff6f5e;
+  &:hover{
+    background-color: #ff6f5e;
+    border-color: #ff6f5e;
+  }
+}
+
+.form-control:focus{
+  box-shadow: none;
+}
+
+.page-link {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color:#777777;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #ff6f5e;
+  border-color: #ff6f5e;
+}
+.page-link:hover {
+  z-index: 2;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #ff6f5e;
+  border-color: #ff6f5e;
+}
+.pagination{
+  margin-top:10px ;
+  margin-bottom:10px ;
+}
+.custom-control-label::before {
+  top: 0px;
+  border: 1px solid #333333;
+}
+.custom-control-label::after {
+  top: 0px;
+}
+.custom-checkbox:focus{
+  box-shadow: none;
+}
+
+.modal-content{
+  height: calc(100vh - 70px);
+}
+.modal-content{
+  min-width: 600px!important;
+}
+iframe {
+  border: none;
+  height: calc(100vh - 70px);
 }
