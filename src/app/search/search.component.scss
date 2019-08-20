@@ -6,7 +6,9 @@
     height: 100%; padding-top: 10px; width: 100%; background: #ffffff;
   }
 }
-
+.min-height{
+  height: 176px;
+}
 .filter-content{
   padding: 0px 10px;
 }
@@ -86,4 +88,17 @@ label {
   a{
     color: #ff6f5e;
   }
+}
+
+/* mobile */
+.mobile{
+  padding-top: 10px!important; width: 100%; background: #ffffff;
+  .min-height{
+    height: auto!important;
+  }
+}
+.mobile .col-md-4{
+  width: 320px !important;
+  max-width: 320px!important;
+  flex: 100%;
 }

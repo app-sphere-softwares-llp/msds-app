@@ -1,10 +1,10 @@
-<section id="search-page">
-<div class="container">
+<section id="search-page" [ngClass]="isMobile">
+<div class="container" >
 
   <div class="row">
   <div class="col-md-4 col-sm-12 pl-1 pr-1">
     <h5 class="header">Search Options</h5>
-    <div class="alert alert-info" style="height: 176px">
+    <div class="alert alert-info min-height" >
       <div class="form-group m-0">
         <label>FMC Business</label>
         <select id="plant" name="plant" class="form-control">
@@ -206,7 +206,7 @@
 
   <div class="col-md-4 col-sm-12 pl-1 pr-1">
     <!-- or sections -->
-    <div class="or-sections" style="min-height: 176px">
+    <div class="or-sections min-height">
       <div class="alert alert-info m-0">
         <div class="form-group">
           <label>Revision Date (MM/dd/yyyy)</label>
@@ -286,7 +286,7 @@
 
   <div class="col-md-4 col-sm-12 pl-1 pr-1">
     <h5 class="header">Product Options</h5>
-    <div class="alert alert-info" style="height: 176px">
+    <div class="alert alert-info min-height">
       <div class="form-group mb-1 mt-1">
         <!--          <label>Product ID</label>-->
         <input id="productID" placeholder="Product ID" name="productID" type="text" value="" class="form-control">
@@ -332,7 +332,7 @@
     </div>
 
 
-    <div class="col-sm-12 pl-1 pr-1 text-center footer">
+    <div class="col-sm-12 pl-1 pr-1 text-center footer" *ngIf="isMobile!=='mobile'">
       <span>Powered By</span>
       <br>
       <a href="http://www.thewercs.com">

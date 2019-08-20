@@ -16,6 +16,7 @@ export class ListComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   public items: ListModelItem[] = mockData;
   public filteredItems: ListModelItem[] = [];
+  public isMobile: string = 'mobile';
 
   constructor(private modalService: BsModalService) {
   }
