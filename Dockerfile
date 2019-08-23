@@ -39,8 +39,7 @@ RUN cd /tmp/app &&\
 RUN rm -Rf /tmp/npm_inst  &&\
     rm -Rf /tmp/app &&\
     rm -Rf /root/.npm &&\
-    apk del nodejs
-
+   
 # this is for virtual host purposes
 EXPOSE 80
 
