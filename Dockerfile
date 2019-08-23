@@ -1,20 +1,34 @@
-# STEP 1 build static website
-FROM node:alpine as builder
-RUN apk update && apk add --no-cache make git
-# Create app directory
-ADD package.json /tmp/npm_inst/package.json
-RUN cd /tmp/npm_inst &&\
-    npm install &&\
-    mkdir -p /tmp/app &&\
-    mv /tmp/npm_inst/node_modules /tmp/app/
+### STAGE 1: Build ###
 
-# build and publish application
-ADD . /tmp/app
-RUN cd /tmp/app &&\
-    ng build &&\
-    mv ./dist/* /usr/share/nginx/html/
+# We label our stage as ‘builder’
+FROM node:10-alpine as builder
 
-# clean
-RUN rm -Rf /tmp/npm_inst  &&\
-    rm -Rf /tmp/app &&\
-    rm -Rf /root/.npm &&\
+COPY package.json package-lock.json ./
+
+## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+
+RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
+
+WORKDIR /ng-app
+
+COPY . .
+
+## Build the angular app in production mode and store the artifacts in dist folder
+
+RUN npm run ng build -- --prod --output-path=dist
+
+
+### STAGE 2: Setup ###
+
+FROM nginx:1.14.1-alpine
+
+## Copy our default nginx config
+COPY nginx/default.conf /etc/nginx/conf.d/
+
+## Remove default nginx website
+RUN rm -rf /usr/share/nginx/html/*
+
+## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
+COPY --from=builder /ng-app/dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
