@@ -23,10 +23,8 @@ RUN npm run ng build -- --prod --output-path=dist
 FROM nginx:1.14.1-alpine
 
 # ## Copy our default nginx config
-# COPY nginx/default.conf /etc/nginx/conf.d/
-run --name tmp-nginx-container -d nginx
-cp tmp-nginx-container:/etc/nginx/default.conf /etc/nginx/conf.d/
-rm -f tmp-nginx-container
+COPY /etc/nginx/default.conf /etc/nginx/conf.d/
+
 
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
