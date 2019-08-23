@@ -24,6 +24,7 @@
         "@fortawesome/free-solid-svg-icons": "^5.10.1",
         "angular-fontawesome": "^1.0.0",
         "bootstrap": "4.1.1",
+        "classlist.js": "^1.1.20150312",
         "ionicons": "^4.6.2",
         "ng-sidebar": "^9.0.0",
         "ng2-daterangepicker": "^2.0.12",
