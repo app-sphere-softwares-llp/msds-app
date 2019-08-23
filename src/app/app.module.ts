@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SearchComponent} from './search/search.component';
 import {ListComponent} from './list/list.component';
+import {LoaderComponent} from './loader/loader.component'
 import {HeaderComponent} from './header/header.component';
 import {BsDatepickerModule, ModalModule, PaginationModule} from 'ngx-bootstrap';
 import {SidebarModule} from 'ng-sidebar';
@@ -14,6 +15,12 @@ import {ItemDetailsComponent} from './item-details/item-details.component';
 import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
 import { FilterComponent } from './filter/filter.component';
 import {Daterangepicker} from 'ng2-daterangepicker';
+import { LoaderService } from './loader/loader.service';
+import {ResultService} from './services/api/result.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {MSDSHttpInterceptor} from './services/api/http.interceptor';
+import {HttpWrapperService} from "./services/api/http-wrapper.service";
+import {ConstantService} from "./services/constant.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +29,8 @@ import {Daterangepicker} from 'ng2-daterangepicker';
     ListComponent,
     HeaderComponent,
     ItemDetailsComponent,
-    FilterComponent
+    FilterComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +42,19 @@ import {Daterangepicker} from 'ng2-daterangepicker';
     ModalModule.forRoot(),
     PdfJsViewerModule,
     Daterangepicker,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpWrapperService,
+    LoaderService,
+    ResultService,
+    ConstantService
+    , {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MSDSHttpInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [ItemDetailsComponent]
 })
