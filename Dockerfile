@@ -7,9 +7,9 @@ COPY package.json package-lock.json ./
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
-RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
+RUN npm ci && mkdir /ng-app && mv ./node_modules ./msds
 
-WORKDIR /ng-app
+WORKDIR /msds
 
 COPY . .
 
@@ -29,6 +29,6 @@ COPY default.conf /etc/nginx/conf.d/
 RUN rm -rf /usr/share/nginx/html/*
 
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
-COPY --from=builder /ng-app/dist /usr/share/nginx/html
+COPY --from=builder /msds/dist /usr/share/nginx/html/msds
 
 CMD ["nginx", "-g", "daemon off;"]
