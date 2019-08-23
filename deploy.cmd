@@ -2,7 +2,7 @@
 
 :: ----------------------
 :: KUDU Deployment Script
-:: Version: 1.0.9
+:: Version: 1.0.8
 :: ----------------------
 
 :: Prerequisites
@@ -23,11 +23,11 @@ setlocal enabledelayedexpansion
 SET ARTIFACTS=%~dp0%..\artifacts
 
 IF NOT DEFINED DEPLOYMENT_SOURCE (
-    SET DEPLOYMENT_SOURCE=%~dp0%.
+  SET DEPLOYMENT_SOURCE=%~dp0%.
 )
 
 IF NOT DEFINED DEPLOYMENT_TARGET (
-  SET DEPLOYMENT_TARGET=%ARTIFACTS%\wwwroot\msds
+  SET DEPLOYMENT_TARGET=%ARTIFACTS%\wwwroot
 )
 
 IF NOT DEFINED NEXT_MANIFEST_PATH (
@@ -47,17 +47,6 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   :: Locally just running "kuduSync" would also work
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
-
-echo "-----------------Variables---------------------------------"
-echo "DEPLOYMENT_SOURCE = %DEPLOYMENT_SOURCE%"
-echo "DEPLOYMENT_TARGET = %DEPLOYMENT_TARGET%"
-echo "NEXT_MANIFEST_PATH = %NEXT_MANIFEST_PATH%"
-echo "PREVIOUS_MANIFEST_PATH = %PREVIOUS_MANIFEST_PATH%"
-echo "KUDU_SYNC_CMD = %appdata%\npm\kuduSync.cmd"
-echo "-----------------Variables END ---------------------------------"
-echo ""
-echo ""
-
 goto Deployment
 
 :: Utility Functions
@@ -99,70 +88,22 @@ goto :EOF
 :Deployment
 echo Handling node.js deployment.
 
-:: 1. Select node version
+:: 1. KuduSync
+IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  IF !ERRORLEVEL! NEQ 0 goto error
+)
+
+:: 2. Select node version
 call :SelectNodeVersion
 
-
-:: 2. Install npm devDependancy packages with explicit flag --only=dev at DEPLOYMENT_SOURCE instead of DEPLOYMENT_TARGET
-echo =======  Installing npm  devDependancy packages: Starting at %TIME% =======
-IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
-  pushd "%DEPLOYMENT_SOURCE%"
-  call :ExecuteCmd !NPM_CMD! install --only=dev
-  IF !ERRORLEVEL! NEQ 0 goto error
-  popd
-)
-echo =======  Installing npm dev packages: Finished at %TIME% =======
-
-
-:: 3. Install bower packages at DEPLOYMENT_SOURCE instead of DEPLOYMENT_TARGET
-echo =======  Installing bower: Starting at %TIME% =======
-IF EXIST "%DEPLOYMENT_SOURCE%\bower.json" (
- pushd "%DEPLOYMENT_SOURCE%"
- call :ExecuteCmd ".\node_modules\.bin\bower.cmd" install
- IF !ERRORLEVEL! NEQ 0 goto error
- popd
- )
-echo =======  Installing bower: Finished at %TIME% =======
-
-
-
-:: 4 Execute Gulp tasks at DEPLOYMENT_SOURCE instead of DEPLOYMENT_TARGET
-echo =======  Executing gulp task release: Starting at %TIME% =======
-IF EXIST "%DEPLOYMENT_SOURCE%\gulpfile.js" (
-  pushd "%DEPLOYMENT_SOURCE%"
-  echo "Building web site using Gulp"
-  ::call :ExecuteCmd !GULP_CMD! release-uncompress
-  call :ExecuteCmd ".\node_modules\.bin\gulp.cmd" build --env prod
-  call :ExecuteCmd ".\node_modules\.bin\gulp.cmd" release
-
-  IF !ERRORLEVEL! NEQ 0 goto error
-  popd
-)
-echo =======  Executing Gulp task release: Finished at %TIME% =======
-
-
-
-:: 5. Do KuduSync BEFORE INSTALLING PRODUCTION DEPENDANCIES
-echo ======= Kudu Syncing: Starting at %TIME% =======
-IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.vscode;node_modules;src;typings;.bowerrc;.deployment;.gitignore;bower.json;deploy.cmd;gulpfile.js;tsconfig.json;tsd.json;.hg;.deployment;deploy.cmd;*.xml;*.yml"
-  IF !ERRORLEVEL! NEQ 0 goto error
-)
-echo ======= Kudu Syncing: Finished at %TIME% =======
-
-
-
-:: 6. Install npm packages at DEPLOYMENT_TARGET
-echo =======  Installing npm packages: Starting at %TIME% =======
+:: 3. Install npm packages
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
   call :ExecuteCmd !NPM_CMD! install --production
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
-echo =======  Installing npm packages: Finished at %TIME% =======
-
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
@@ -178,8 +119,6 @@ exit /b %ERRORLEVEL%
 :error
 endlocal
 echo An error has occurred during web site deployment.
-::echo Press any key to exit.
-::pause
 call :exitSetErrorLevel
 call :exitFromFunction 2>nul
 
@@ -192,7 +131,3 @@ exit /b 1
 :end
 endlocal
 echo Finished successfully.
-
-
-
-
