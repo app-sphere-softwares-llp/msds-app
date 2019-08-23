@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   bsModalRef: BsModalRef;
   faBars = faBars;
   faArrowLeft = faArrowLeft;
-  public items: ListModelItem[] = mockData;
+  public items: ListModelItem[];
   public filteredItems: ListModelItem[] = [];
   public isMobile: string = 'mobile';
 
@@ -23,7 +23,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filteredItems = this.items.slice(0, 20);
+    // this.filteredItems = this.items.slice(0, 20);
     this.getAll();
   }
 
@@ -35,7 +35,7 @@ export class ListComponent implements OnInit {
 
   openModal(item: ListModelItem) {
     this.bsModalRef = this.modalService.show(ItemDetailsComponent, {class: 'modal-lg'});
-    this.bsModalRef.content.title = item.ProductName;
+    this.bsModalRef.content.title = item.productName;
   }
 
   public _opened: boolean = false;
@@ -141,7 +141,8 @@ export class ListComponent implements OnInit {
 
   public getAll() {
     this.resultService.getAll().subscribe(res => {
-     console.log(res);
+      this.items = res;
+      this.filteredItems = this.items.slice(0, 20);
     });
   }
 

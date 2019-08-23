@@ -1,4 +1,4 @@
-export class ListModelItem {
+export class ListModelItemMock {
   PDFName: string;
   SpecificationID: string;
   Language: string;
@@ -26,4 +26,35 @@ export class ListModelItem {
   WercsSubFormat: string;
   AuthorizedPortal: string;
   Path: string;
+}
+
+export class ListModelItem {
+  activeVersion: string;
+  authorizedPortal: string;
+  casNumber: string;
+  chemicalName: string;
+  cmr: string;
+  commercialNames: string;
+  commonName: string;
+  ehsVersionNo: string;
+  fileFormat: string;
+  fmcBusiness: string;
+  genvariant: string;
+  id: string;
+  incode: string;
+  iupac: string;
+  language: string;
+  legacySDSID: string;
+  legacySpecID: string;
+  path: string;
+  pdfName: string;
+  productName: string;
+  publishDate: string;
+  revisionDate: string;
+  specificationID: string;
+  tradeName: string;
+  validityArea: string;
+  validityAreaDescription: string;
+  wercsRevisionNo:string;
+  wercsSubFormat: string;
 }

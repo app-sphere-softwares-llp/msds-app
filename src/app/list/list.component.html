@@ -1,5 +1,5 @@
 <ng-sidebar-container
-        (onBackdropClicked)="_onBackdropClicked()" style="height: calc(100vh - 81px);">
+        (onBackdropClicked)="_onBackdropClicked()" style="height: calc(100vh - 85px);">
       <ng-sidebar
         [(opened)]="_opened"
         [mode]="_MODES[_modeNum]"
@@ -50,54 +50,54 @@
         </header>
         <section class="table-contents">
 
-                <table width="100%" class="table">
-                  <thead>
+          <h2 class="no-data" *ngIf="filteredItems && filteredItems.length===0">No Data Found</h2>
 
-                  <pagination
-                    [itemsPerPage]="25"
-                    [totalItems]="items.length"
-                    (pageChanged)="pageChanged($event)"
-                  ></pagination>
+          <table width="100%" class="table" *ngIf="filteredItems && filteredItems.length">
+            <thead>
 
-                  </thead>
-                  <thead>
-                  <tr class="">
-                    <th width="15%" align="left">
-                      FMC Business
-                    </th>
-                    <th width="20%" align="left">
-                      Product ID
-                    </th>
-                    <th width="30%" align="left">
-                      Product Name
-                    </th>
-                    <th width="15%" align="left">
-                      Sub Format
-                    </th>
-                    <th width="10%" class="text-center">
-                      Language
-                    </th>
-                    <th width="10%" class="text-center">
-                      Revision Date
-                    </th>
-                  </tr>
-                  </thead>
-                  <tbody>
+            <pagination
+              [itemsPerPage]="25"
+              [totalItems]="items.length"
+              (pageChanged)="pageChanged($event)"
+            ></pagination>
 
-                  <tr class="altitem" *ngFor="let item of filteredItems;let i = index">
-                    <td>{{ item.FMCBusiness }}</td>
-                    <td>
-                      <a href="javascript: void 0" (click)="openModal(item)">001-ST-A</a>
-                    </td>
-                    <td>{{ item.ProductName }}</td>
-                    <td>{{ item.WercsSubFormat }}</td>
-                    <td class="text-center">{{ item.Language }}</td>
-                    <td class="text-center">{{ item.RevisionDate }}</td>
-                  </tr>
+            </thead>
+            <thead>
+            <tr class="">
+              <th width="15%" align="left">
+                FMC Business
+              </th>
+              <th width="20%" align="left">
+                Product ID
+              </th>
+              <th width="30%" align="left">
+                Product Name
+              </th>
+              <th width="15%" align="left">
+                Sub Format
+              </th>
+              <th width="10%" class="text-center">
+                Language
+              </th>
+              <th width="10%" class="text-center">
+                Revision Date
+              </th>
+            </tr>
+            </thead>
+            <tbody>
 
-                  </tbody>
-
-                </table>
+            <tr class="altitem" *ngFor="let item of filteredItems;let i = index">
+              <td>{{ item.fmcBusiness }}</td>
+              <td>
+                <a href="javascript: void 0" (click)="openModal(item)">{{item.specificationID}}</a>
+              </td>
+              <td>{{ item.productName }}</td>
+              <td>{{ item.wercsSubFormat }}</td>
+              <td class="text-center">{{ item.language }}</td>
+              <td class="text-center">{{ item.revisionDate | date :'MM-dd-yyyy' }}</td>
+            </tr>
+            </tbody>
+          </table>
         </section>
       </div>
     </ng-sidebar-container>

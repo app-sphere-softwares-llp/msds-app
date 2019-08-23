@@ -1,6 +1,9 @@
 table.listgrid td{
   padding: 2px 15px;
   border-style:none;
+  img{
+    min-height: 75px;
+  }
 }
 table.listgrid, table.listgrid td{
   border-color: #336699;
@@ -23,5 +26,8 @@ table.listgrid .header{
   }
   img{
     width: 60px;
+  }
+  img{
+    min-height: auto;
   }
 }
