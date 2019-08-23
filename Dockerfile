@@ -32,7 +32,7 @@ RUN cd /tmp/npm_inst &&\
 # build and publish application
 ADD . /tmp/app
 RUN cd /tmp/app &&\
-    npm run build:aot &&\
+    ng build &&\
     mv ./dist/* /usr/share/nginx/html/
 
 # clean
