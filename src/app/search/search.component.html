@@ -219,7 +219,7 @@
               </select>
             </div>
             <div class="col-8">
-              <input id="reviseddate" name="reviseddate" placeholder="MM-DD-YYYY" bsDatepicker autocomplete="Off" class="form-control" type="text">
+              <input id="reviseddate" name="reviseddate" placeholder="MM-DD-YYYY" daterangepicker [options]="options" (selected)="selectedDate($event, daterange, 'reviseddate')"  autocomplete="Off" class="form-control" type="text">
             </div>
           </div>
         </div>
@@ -255,7 +255,7 @@
               </select>
             </div>
             <div class="col-8">
-              <input id="publisheddate" name="publisheddate" placeholder="MM-DD-YYYY" bsDatepicker autocomplete="Off" class="form-control" type="text">
+              <input id="publisheddate" name="publisheddate" placeholder="MM-DD-YYYY" daterangepicker [options]="options" (selected)="selectedDate($event, daterange, 'publisheddate')" autocomplete="Off" class="form-control" type="text">
             </div>
           </div>
         </div>

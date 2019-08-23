@@ -4,6 +4,7 @@ import {mockData} from '../models/mockdata';
 import {BsModalRef, BsModalService, PageChangedEvent} from 'ngx-bootstrap';
 import {faBars, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {ItemDetailsComponent} from '../item-details/item-details.component';
+import {ResultService} from '../services/api/result.service';
 
 @Component({
   selector: 'app-list',
@@ -18,11 +19,12 @@ export class ListComponent implements OnInit {
   public filteredItems: ListModelItem[] = [];
   public isMobile: string = 'mobile';
 
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService, private resultService: ResultService) {
   }
 
   ngOnInit() {
     this.filteredItems = this.items.slice(0, 20);
+    this.getAll();
   }
 
   pageChanged(event: PageChangedEvent) {
@@ -135,6 +137,12 @@ export class ListComponent implements OnInit {
 
   public _onBackdropClicked(): void {
     console.info('Backdrop clicked');
+  }
+
+  public getAll() {
+    this.resultService.getAll().subscribe(res => {
+     console.log(res);
+    });
   }
 
 }
