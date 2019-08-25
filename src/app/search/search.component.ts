@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['list']);
   }
 
-  public selectedDate(value: any, datepicker?: any) {
+  public selectedDate(value: any, datepicker?: any, publishedDate?: string) {
     // this is the date the iser selected
     console.log(value);
 
