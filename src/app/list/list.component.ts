@@ -141,7 +141,7 @@ export class ListComponent implements OnInit {
 
   public getAll() {
     this.resultService.getAll().subscribe(res => {
-      this.items = res;
+      this.items = res.response;
       this.filteredItems = this.items.slice(0, 20);
     });
   }
