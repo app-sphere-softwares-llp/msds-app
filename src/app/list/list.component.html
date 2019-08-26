@@ -35,7 +35,7 @@
         <header class="demo-header">
           <div class="row">
             <div class="col-4">
-              <button (click)="_toggleOpened()" class="btn"> <fa-icon [icon]="faBars"></fa-icon>
+              <button (click)="_toggleOpened()" class="btn btn"> <fa-icon [icon]="faBars"></fa-icon>
                 <span>&ensp;Results</span>
               </button>
 
@@ -64,13 +64,11 @@
             </thead>
             <thead>
             <tr class="">
+
               <th width="15%" align="left">
-                FMC Business
-              </th>
-              <th width="20%" align="left">
                 Product ID
               </th>
-              <th width="30%" align="left">
+              <th width="35%" align="left">
                 Product Name
               </th>
               <th width="15%" align="left">
@@ -80,21 +78,38 @@
                 Language
               </th>
               <th width="10%" class="text-center">
+                Published Date
+              </th>
+              <th width="10%" class="text-center">
                 Revision Date
+              </th>
+              <th width="10%" class="text-center">
+                Action
               </th>
             </tr>
             </thead>
             <tbody>
 
             <tr class="altitem" *ngFor="let item of filteredItems;let i = index">
-              <td>{{ item.fmcBusiness }}</td>
+              <!-- <td>{{ item.fmcBusiness }}</td> -->
               <td>
                 <a href="javascript: void 0" (click)="openModal(item)">{{item.specificationID}}</a>
               </td>
               <td>{{ item.productName }}</td>
               <td>{{ item.wercsSubFormat }}</td>
               <td class="text-center">{{ item.language }}</td>
+              <td class="text-center">{{ item.publishDate | date :'MM-dd-yyyy' }}</td>
               <td class="text-center">{{ item.revisionDate | date :'MM-dd-yyyy' }}</td>
+              <td style="text-align: center">
+                <table>
+                  <tr>
+                    <td style="text-align: center">
+                      <a href="javascript: void 0" (click)="openModal(item)"> <img src="../../msds/assets/pdf.png" height="15" ></a>
+
+                    </td>
+                  </tr>
+                </table>
+              </td>
             </tr>
             </tbody>
           </table>

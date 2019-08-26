@@ -68,11 +68,11 @@ export class ListComponent implements OnInit {
   }
 
   public _toggleAutoCollapseHeight(): void {
-    this._autoCollapseHeight = this._autoCollapseHeight ? null : 500;
+    this._autoCollapseHeight = this._autoCollapseHeight ? null : 500 ;
   }
 
   public _toggleAutoCollapseWidth(): void {
-    this._autoCollapseWidth = this._autoCollapseWidth ? null : 500;
+    this._autoCollapseWidth = this._autoCollapseWidth ? null : 800 ;
   }
 
   public _togglePosition(): void {
@@ -141,9 +141,11 @@ export class ListComponent implements OnInit {
 
   public getAll() {
     this.resultService.getAll().subscribe(res => {
-      this.items = res.response;
+      this.items = res;
       this.filteredItems = this.items.slice(0, 20);
     });
   }
+
+
 
 }
