@@ -49,7 +49,7 @@ export class ListComponent implements OnInit {
             const filterType = v[`${key}FilterType`];
             switch (filterType) {
               case 'eq':
-                resArr.push(moment(item[key], 'DD-MM-YYYY').isSame(moment(v[key], 'DD-MM-YYYY')));
+                resArr.push(moment(item[key], 'YYYY/MM/DD').isSame(moment(v[key], 'MM-DD-YYYY')));
                 break;
               case 'gteq':
                 resArr.push(moment(item[key], 'DD-MM-YYYY').isSameOrAfter(moment(v[key], 'DD-MM-YYYY')));
