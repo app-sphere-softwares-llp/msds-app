@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ListModelItem} from '../models/listModel';
-import {mockData} from '../models/mockdata';
 import {BsModalRef, BsModalService, PageChangedEvent} from 'ngx-bootstrap';
-import {faBars, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
-import {ItemDetailsComponent} from '../item-details/item-details.component';
+import {faSearch, faBars} from '@fortawesome/free-solid-svg-icons';
 import {ResultService} from '../services/api/result.service';
+import {PdfJsViewerComponent} from 'ng2-pdfjs-viewer';
+import {mockPdf} from '../models/mockdata';
 
 @Component({
   selector: 'app-list',
@@ -13,11 +13,19 @@ import {ResultService} from '../services/api/result.service';
 })
 export class ListComponent implements OnInit {
   bsModalRef: BsModalRef;
+
+
   faBars = faBars;
-  faArrowLeft = faArrowLeft;
+  faSearch = faSearch;
   public items: ListModelItem[];
   public filteredItems: ListModelItem[] = [];
   public isMobile: string = 'mobile';
+  public searchEditModal = false;
+  public pdfModal = false;
+  public pdfModalData = ListModelItem;
+  @ViewChild(PdfJsViewerComponent, {static: true}) public pdfViewer: PdfJsViewerComponent;
+  title: string;
+  base64 = mockPdf;
 
   constructor(private modalService: BsModalService, private resultService: ResultService) {
   }
@@ -34,8 +42,53 @@ export class ListComponent implements OnInit {
   }
 
   openModal(item: ListModelItem) {
-    this.bsModalRef = this.modalService.show(ItemDetailsComponent, {class: 'modal-lg'});
-    this.bsModalRef.content.title = item.productName;
+    this.pdfModal = true;
+    // @ts-ignore
+    this.pdfModalData = item;
+    // this.bsModalRef = this.modalService.show(ItemDetailsComponent, {class: 'modal-lg'});
+    // this.bsModalRef.content.title = item.productName;
+    this.viewPDF();
+  }
+
+  viewPDF(): void {
+    const blob: Blob = this.base64ToBlob(this.base64, 'application/pdf', 512);
+    this.pdfViewer.pdfSrc = blob;
+    this.pdfViewer.showSpinner = true;
+    this.pdfViewer.refresh();
+  }
+
+  base64ToBlob(b64Data, contentType, sliceSize) {
+    contentType = contentType || '';
+    sliceSize = sliceSize || 512;
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+    let offset = 0;
+    while (offset < byteCharacters.length) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+      const byteNumbers = new Array(slice.length);
+      let i = 0;
+      while (i < slice.length) {
+        byteNumbers[i] = slice.charCodeAt(i);
+        i++;
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+      offset += sliceSize;
+    }
+    return new Blob(byteArrays, {type: contentType});
+  }
+
+
+  editSearch(item: ListModelItem) {
+    this.searchEditModal = true;
+  }
+
+  /**
+   * Close the modal and reset error states
+   */
+  public cancel(): void {
+    this.searchEditModal = false;
+    this.pdfModal = false;
   }
 
   public _opened: boolean = false;
@@ -68,11 +121,11 @@ export class ListComponent implements OnInit {
   }
 
   public _toggleAutoCollapseHeight(): void {
-    this._autoCollapseHeight = this._autoCollapseHeight ? null : 500 ;
+    this._autoCollapseHeight = this._autoCollapseHeight ? null : 500;
   }
 
   public _toggleAutoCollapseWidth(): void {
-    this._autoCollapseWidth = this._autoCollapseWidth ? null : 800 ;
+    this._autoCollapseWidth = this._autoCollapseWidth ? null : 800;
   }
 
   public _togglePosition(): void {
@@ -145,7 +198,6 @@ export class ListComponent implements OnInit {
       this.filteredItems = this.items.slice(0, 20);
     });
   }
-
 
 
 }

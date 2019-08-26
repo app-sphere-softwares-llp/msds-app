@@ -1,625 +1,383 @@
 <div class="main-container">
-<div class="content-container">
+  <div class="content-container">
 
-  <div class="content-area">
-      <h3>Clarity Starter Instructions:</h3>
-      <ul>
-        <li>Start by clicking Fork in the toolbar above.</li>
-        <li>Implement the problem in the new editor.</li>
-        <li>Save the result, and share the url in a GitHub or StackOverflow issue.</li>
-      </ul>
+    <div class="content-area">
+
       <div class="clr-row">
-          <div class="clr-col-lg-4 clr-col-md-8 clr-col-12">
-              <div class="card">
+        <div class="clr-col-lg-4 clr-col-md-8 clr-col-12">
+          <div class="card">
 
-                  <div class="card-block">
+            <div class="card-header">Search Options</div>
+            <div class="card-block min-height card-1">
 
-                      <div class="card-text">
-                          <form class="clr-form clr-form-horizontal">
-                              <clr-select-container>
-                                  <label>FMC Business</label>
-                                  <select clrSelect name="options" (ngModel)="options">
-                                      <option value="-1">
-                                          All
-                                        </option>
-                                        <option value="APG-APG">APG</option>
-                                        <option value="CPG-ACD">Alkali</option>
-                                        <option value="CPG-ESD">Environmental Solutions</option>
-                                        <option value="CPG-NXD">Natronx</option>
-                                        <option value="CPG-PXD">Peroxygens</option>
-                                        <option value="SCG-BIO">Biopolymer</option>
-                                        <option value="WERCS">The Wercs, Ltd.</option>
-                                  </select>
-                                </clr-select-container>
-                                <clr-select-container>
-                                    <label>Language</label>
-                                    <select clrSelect name="options" (ngModel)="options">
-                                        <option value="-1">
-                                            All
-                                          </option>
-                                          <option selected="" value="EN">AMERICAN ENGLISH</option>
-                                          <option value="AR">ARABIC</option>
-                                          <option value="AT">AUSTRIAN GERMAN</option>
-                                          <option value="BD">BELGIAN DUTCH</option>
-                                          <option value="BF">BELGIAN FRENCH</option>
-                                          <option value="BR">BRAZILIAN PORTUGUESE</option>
-                                          <option value="BE">BRITISH ENGLISH</option>
-                                          <option value="BG">BULGARIAN</option>
-                                          <option value="CF">CANADIAN FRENCH</option>
-                                          <option value="TA">CHIN. TRADITIONAL</option>
-                                          <option value="CN">CHINESE SIMPLIFIED</option>
-                                          <option value="CR">CROATIAN</option>
-                                          <option value="CS">CZECH</option>
-                                          <option value="DA">DANISH</option>
-                                          <option value="NL">DUTCH</option>
-                                          <option value="ET">ESTONIAN</option>
-                                          <option value="FI">FINNISH</option>
-                                          <option value="FR">FRENCH</option>
-                                          <option value="DE">GERMAN</option>
-                                          <option value="EL">GREEK</option>
-                                          <option value="HB">HEBREW</option>
-                                          <option value="HI">HINDI</option>
-                                          <option value="HU">HUNGARIAN</option>
-                                          <option value="ID">INDONESIAN</option>
-                                          <option value="GA">IRISH ENGLISH</option>
-                                          <option value="IT">ITALIAN</option>
-                                          <option value="JP">JAPANESE</option>
-                                          <option value="KO">KOREAN</option>
-                                          <option value="LV">LATVIAN</option>
-                                          <option value="LT">LITHUANIAN</option>
-                                          <option value="MA">MALAYSIAN</option>
-                                          <option value="MS">MEXICAN SPANISH</option>
-                                          <option value="NO">NORWEGIAN</option>
-                                          <option value="PL">POLISH</option>
-                                          <option value="PT">PORTUGUESE</option>
-                                          <option value="RO">ROMANIAN</option>
-                                          <option value="RU">RUSSIAN</option>
-                                          <option value="SR">SERBIAN</option>
-                                          <option value="SK">SLOVAKIAN</option>
-                                          <option value="SN">SLOVENIAN</option>
-                                          <option value="ES">SPANISH</option>
-                                          <option value="SV">SWEDISH</option>
-                                          <option value="SF">SWISS FRENCH</option>
-                                          <option value="SG">SWISS GERMAN</option>
-                                          <option value="SI">SWISS ITALIAN</option>
-                                          <option value="TH">THAILAND</option>
-                                          <option value="TR">TURKISH</option>
-                                          <option value="UK">UKRAINE</option>
-                                          <option value="VI">VIETNAMESE</option>
-                                    </select>
-                                  </clr-select-container>
-                                  <clr-select-container>
-                                      <label>Format</label>
-                                      <select clrSelect name="options" (ngModel)="options">
-                                          <option value="-1">
-                                              All
-                                            </option>
-                                            <option value="AMS">AMS</option>
-                                            <option value="BRZ">Brazil</option>
-                                            <option value="CHN">China</option>
-                                            <option value="JAP">Japan</option>
-                                            <option value="KOR">Korea</option>
-                                            <option value="LEG">Legacy Formats</option>
-                                            <option value="MTR">Global Format - Master</option>
-                                      </select>
-                                    </clr-select-container>
-                                  <clr-select-container>
-                                      <label>Sub Format</label>
-                                      <select clrSelect name="options" (ngModel)="options">
-                                          <option value="-1">
-                                              All
-                                            </option>
-                                            <option value="AGAP">APG Asia Pacific</option>
-                                            <option value="AGCA">APG Canada</option>
-                                            <option value="AGCL">APG CLP GHS</option>
-                                            <option value="AGCP">AG COPY TEMPLATE</option>
-                                            <option value="AGDR">APG Data Review</option>
-                                            <option value="AGEU">APG EU SDS</option>
-                                            <option value="AGHS">--- OSHA GHS ---</option>
-                                            <option value="AGMX">APG Mexico</option>
-                                            <option value="AGNA">APG North America</option>
-                                            <option value="AGRA">APG Regulatory Analysis</option>
-                                            <option value="AGSR">APG SDS Request Form</option>
-                                            <option value="AGUK">AGUK-LABEL</option>
-                                            <option value="ALC">America, Latin and Central</option>
-                                            <option value="ALT">Alternatives saved as options</option>
-                                            <option value="AMS">Default AMS subformat</option>
-                                            <option value="APCN">China</option>
-                                            <option value="APHS">APG GHS NA</option>
-                                            <option value="APJP">Japan</option>
-                                            <option value="APKO">Korea</option>
-                                            <option value="APR">Approval Summary</option>
-                                            <option value="ASAP">Ag Solutions Asia Pacific</option>
-                                            <option value="ASJP">Ag Solutions Japan GHS</option>
-                                            <option value="ASKR">Ag Solutions Korea</option>
-                                            <option value="ASLA">Ag Solutions Latin America</option>
-                                            <option value="ASNA">Ag Solutions North America</option>
-                                            <option value="AUS">Australia, New Zealand</option>
-                                            <option value="AUST">Australia preGHS</option>
-                                            <option value="BGHS">--- Brazil GHS ---</option>
-                                            <option value="BPAP">BioPolymer Asia Pacific</option>
-                                            <option value="BPCL">BioP CLP GHS</option>
-                                            <option value="BPDR">BioPolymer Data Review</option>
-                                            <option value="BPEU">BioP EU REACH SDS</option>
-                                            <option value="BPNA">BioPolymer North American MSDS</option>
-                                            <option value="BPRA">BioPolymer Regulatory Analysis</option>
-                                            <option value="BPSR">BioPolymer SDS Request Form</option>
-                                            <option value="BRZ">Default BRZ subformat</option>
-                                            <option value="CGHS">--- China GHS ---</option>
-                                            <option value="CHN">Default CHN subformat</option>
-                                            <option value="CLP1">CLP</option>
-                                            <option value="CMA">Raw Material Introduction</option>
-                                            <option value="COPY">COPY Subformat - Peroxychem</option>
-                                            <option value="CPAP">CPG Asia Pacific</option>
-                                            <option value="CPCL">CPG CLP GHS</option>
-                                            <option value="CPDR">CPG Data Review</option>
-                                            <option value="CPEU">CPG EU REACh Subformat</option>
-                                            <option value="CPGH">CPNA GHS</option>
-                                            <option value="CPNA">CPG North American MSDS</option>
-                                            <option value="CPRA">CPG Regulatory Analysis</option>
-                                            <option value="CPSR">CPG SDS Request Form</option>
-                                            <option value="DATA">ANALYSIS</option>
-                                            <option value="EGHS">--- EU GHS ---</option>
-                                            <option value="ESDS">Experimental SDSs</option>
-                                            <option value="ESN">Exposure Scenario 2</option>
-                                            <option value="EU">EU REACH SDS</option>
-                                            <option value="EUAL">EU - Incl ALL national codes</option>
-                                            <option value="EUEX">EU Experimental SDSs</option>
-                                            <option value="EXSC">Exposure Scenarios (MTR/EXSC)</option>
-                                            <option value="FSDS">Demonstration Only</option>
-                                            <option value="GHAC">GHAC</option>
-                                            <option value="GHAP">GHS AP</option>
-                                            <option value="GHBC">GHS Supplemental for Brazil</option>
-                                            <option value="GHJC">GHS Supplemental for Japan</option>
-                                            <option value="GHKC">GHS Supplemental for Korea</option>
-                                            <option value="GHOC">GHS Supplemental for China</option>
-                                            <option value="GHS">Japan GHS</option>
-                                            <option value="GHS">Korean GHS</option>
-                                            <option value="GHS">Globally Harmonized System</option>
-                                            <option value="GHSC">GHS Substance Classifications</option>
-                                            <option value="GHSZ">GHS Substance Classifications</option>
-                                            <option value="HNHS">Health &amp; Nutrition GHS</option>
-                                            <option value="IUC">IUCLID Holding</option>
-                                            <option value="JAP">Default JAP subformat</option>
-                                            <option value="JGHS">--- Japan GHS ---</option>
-                                            <option value="KGHS">--- Korea GHS ---</option>
-                                            <option value="KIT">Appended MSDS</option>
-                                            <option value="KOR">Default KOR subformat</option>
-                                            <option value="LBL">Label</option>
-                                            <option value="LEG">Default LEG subformat</option>
-                                            <option value="NAGH">North America GHS</option>
-                                            <option value="NAM">North America</option>
-                                            <option value="OAGH">AGHS Original</option>
-                                            <option value="RCHZ">HN REGULATORY DATA</option>
-                                            <option value="REG">Regulatory Analysis</option>
-                                            <option value="RULE">Rules Subformat</option>
-                                            <option value="SARA">DATA REQUIRED FOR SARA</option>
-                                            <option value="SDSR">SDS Request Form</option>
-                                            <option value="SIMS">REACH SIMS</option>
-                                            <option value="TEMP">Temporary Hold</option>
-                                            <option value="TEST">For Testing</option>
-                                            <option value="TOX">Toxicology</option>
-                                            <option value="VTI">VTI</option>
-                                            <option value="WPR1">REACh Subformat</option>
-                                      </select>
-                                    </clr-select-container>
-                              <!-- <clr-input-container>
-                                  <label>Field 2 label</label>
-                                  <input clrInput type="text" (ngModel)="model" name="example" />
-                              </clr-input-container> -->
-                          </form>
+              <div class="card-text">
+                <form class="clr-form clr-form-horizontal">
+                  <clr-select-container>
+                    <label>FMC Business</label>
+                    <select clrSelect name="options" (ngModel)="options">
+                      <option value="-1">
+                        All
+                      </option>
+                      <option value="APG-APG">APG</option>
+                      <option value="CPG-ACD">Alkali</option>
+                      <option value="CPG-ESD">Environmental Solutions</option>
+                      <option value="CPG-NXD">Natronx</option>
+                      <option value="CPG-PXD">Peroxygens</option>
+                      <option value="SCG-BIO">Biopolymer</option>
+                      <option value="WERCS">The Wercs, Ltd.</option>
+                    </select>
+                  </clr-select-container>
+                  <clr-select-container>
+                    <label>Language</label>
+                    <select clrSelect name="options" (ngModel)="options">
+                      <option value="-1">
+                        All
+                      </option>
+                      <option selected="" value="EN">AMERICAN ENGLISH</option>
+                      <option value="AR">ARABIC</option>
+                      <option value="AT">AUSTRIAN GERMAN</option>
+                      <option value="BD">BELGIAN DUTCH</option>
+                      <option value="BF">BELGIAN FRENCH</option>
+                      <option value="BR">BRAZILIAN PORTUGUESE</option>
+                      <option value="BE">BRITISH ENGLISH</option>
+                      <option value="BG">BULGARIAN</option>
+                      <option value="CF">CANADIAN FRENCH</option>
+                      <option value="TA">CHIN. TRADITIONAL</option>
+                      <option value="CN">CHINESE SIMPLIFIED</option>
+                      <option value="CR">CROATIAN</option>
+                      <option value="CS">CZECH</option>
+                      <option value="DA">DANISH</option>
+                      <option value="NL">DUTCH</option>
+                      <option value="ET">ESTONIAN</option>
+                      <option value="FI">FINNISH</option>
+                      <option value="FR">FRENCH</option>
+                      <option value="DE">GERMAN</option>
+                      <option value="EL">GREEK</option>
+                      <option value="HB">HEBREW</option>
+                      <option value="HI">HINDI</option>
+                      <option value="HU">HUNGARIAN</option>
+                      <option value="ID">INDONESIAN</option>
+                      <option value="GA">IRISH ENGLISH</option>
+                      <option value="IT">ITALIAN</option>
+                      <option value="JP">JAPANESE</option>
+                      <option value="KO">KOREAN</option>
+                      <option value="LV">LATVIAN</option>
+                      <option value="LT">LITHUANIAN</option>
+                      <option value="MA">MALAYSIAN</option>
+                      <option value="MS">MEXICAN SPANISH</option>
+                      <option value="NO">NORWEGIAN</option>
+                      <option value="PL">POLISH</option>
+                      <option value="PT">PORTUGUESE</option>
+                      <option value="RO">ROMANIAN</option>
+                      <option value="RU">RUSSIAN</option>
+                      <option value="SR">SERBIAN</option>
+                      <option value="SK">SLOVAKIAN</option>
+                      <option value="SN">SLOVENIAN</option>
+                      <option value="ES">SPANISH</option>
+                      <option value="SV">SWEDISH</option>
+                      <option value="SF">SWISS FRENCH</option>
+                      <option value="SG">SWISS GERMAN</option>
+                      <option value="SI">SWISS ITALIAN</option>
+                      <option value="TH">THAILAND</option>
+                      <option value="TR">TURKISH</option>
+                      <option value="UK">UKRAINE</option>
+                      <option value="VI">VIETNAMESE</option>
+                    </select>
+                  </clr-select-container>
+                  <clr-select-container>
+                    <label>Format</label>
+                    <select clrSelect name="options" (ngModel)="options">
+                      <option value="-1">
+                        All
+                      </option>
+                      <option value="AMS">AMS</option>
+                      <option value="BRZ">Brazil</option>
+                      <option value="CHN">China</option>
+                      <option value="JAP">Japan</option>
+                      <option value="KOR">Korea</option>
+                      <option value="LEG">Legacy Formats</option>
+                      <option value="MTR">Global Format - Master</option>
+                    </select>
+                  </clr-select-container>
+                  <clr-select-container>
+                    <label>Sub Format</label>
+                    <select clrSelect name="options" (ngModel)="options">
+                      <option value="-1">
+                        All
+                      </option>
+                      <option value="AGAP">APG Asia Pacific</option>
+                      <option value="AGCA">APG Canada</option>
+                      <option value="AGCL">APG CLP GHS</option>
+                      <option value="AGCP">AG COPY TEMPLATE</option>
+                      <option value="AGDR">APG Data Review</option>
+                      <option value="AGEU">APG EU SDS</option>
+                      <option value="AGHS">--- OSHA GHS ---</option>
+                      <option value="AGMX">APG Mexico</option>
+                      <option value="AGNA">APG North America</option>
+                      <option value="AGRA">APG Regulatory Analysis</option>
+                      <option value="AGSR">APG SDS Request Form</option>
+                      <option value="AGUK">AGUK-LABEL</option>
+                      <option value="ALC">America, Latin and Central</option>
+                      <option value="ALT">Alternatives saved as options</option>
+                      <option value="AMS">Default AMS subformat</option>
+                      <option value="APCN">China</option>
+                      <option value="APHS">APG GHS NA</option>
+                      <option value="APJP">Japan</option>
+                      <option value="APKO">Korea</option>
+                      <option value="APR">Approval Summary</option>
+                      <option value="ASAP">Ag Solutions Asia Pacific</option>
+                      <option value="ASJP">Ag Solutions Japan GHS</option>
+                      <option value="ASKR">Ag Solutions Korea</option>
+                      <option value="ASLA">Ag Solutions Latin America</option>
+                      <option value="ASNA">Ag Solutions North America</option>
+                      <option value="AUS">Australia, New Zealand</option>
+                      <option value="AUST">Australia preGHS</option>
+                      <option value="BGHS">--- Brazil GHS ---</option>
+                      <option value="BPAP">BioPolymer Asia Pacific</option>
+                      <option value="BPCL">BioP CLP GHS</option>
+                      <option value="BPDR">BioPolymer Data Review</option>
+                      <option value="BPEU">BioP EU REACH SDS</option>
+                      <option value="BPNA">BioPolymer North American MSDS</option>
+                      <option value="BPRA">BioPolymer Regulatory Analysis</option>
+                      <option value="BPSR">BioPolymer SDS Request Form</option>
+                      <option value="BRZ">Default BRZ subformat</option>
+                      <option value="CGHS">--- China GHS ---</option>
+                      <option value="CHN">Default CHN subformat</option>
+                      <option value="CLP1">CLP</option>
+                      <option value="CMA">Raw Material Introduction</option>
+                      <option value="COPY">COPY Subformat - Peroxychem</option>
+                      <option value="CPAP">CPG Asia Pacific</option>
+                      <option value="CPCL">CPG CLP GHS</option>
+                      <option value="CPDR">CPG Data Review</option>
+                      <option value="CPEU">CPG EU REACh Subformat</option>
+                      <option value="CPGH">CPNA GHS</option>
+                      <option value="CPNA">CPG North American MSDS</option>
+                      <option value="CPRA">CPG Regulatory Analysis</option>
+                      <option value="CPSR">CPG SDS Request Form</option>
+                      <option value="DATA">ANALYSIS</option>
+                      <option value="EGHS">--- EU GHS ---</option>
+                      <option value="ESDS">Experimental SDSs</option>
+                      <option value="ESN">Exposure Scenario 2</option>
+                      <option value="EU">EU REACH SDS</option>
+                      <option value="EUAL">EU - Incl ALL national codes</option>
+                      <option value="EUEX">EU Experimental SDSs</option>
+                      <option value="EXSC">Exposure Scenarios (MTR/EXSC)</option>
+                      <option value="FSDS">Demonstration Only</option>
+                      <option value="GHAC">GHAC</option>
+                      <option value="GHAP">GHS AP</option>
+                      <option value="GHBC">GHS Supplemental for Brazil</option>
+                      <option value="GHJC">GHS Supplemental for Japan</option>
+                      <option value="GHKC">GHS Supplemental for Korea</option>
+                      <option value="GHOC">GHS Supplemental for China</option>
+                      <option value="GHS">Japan GHS</option>
+                      <option value="GHS">Korean GHS</option>
+                      <option value="GHS">Globally Harmonized System</option>
+                      <option value="GHSC">GHS Substance Classifications</option>
+                      <option value="GHSZ">GHS Substance Classifications</option>
+                      <option value="HNHS">Health &amp; Nutrition GHS</option>
+                      <option value="IUC">IUCLID Holding</option>
+                      <option value="JAP">Default JAP subformat</option>
+                      <option value="JGHS">--- Japan GHS ---</option>
+                      <option value="KGHS">--- Korea GHS ---</option>
+                      <option value="KIT">Appended MSDS</option>
+                      <option value="KOR">Default KOR subformat</option>
+                      <option value="LBL">Label</option>
+                      <option value="LEG">Default LEG subformat</option>
+                      <option value="NAGH">North America GHS</option>
+                      <option value="NAM">North America</option>
+                      <option value="OAGH">AGHS Original</option>
+                      <option value="RCHZ">HN REGULATORY DATA</option>
+                      <option value="REG">Regulatory Analysis</option>
+                      <option value="RULE">Rules Subformat</option>
+                      <option value="SARA">DATA REQUIRED FOR SARA</option>
+                      <option value="SDSR">SDS Request Form</option>
+                      <option value="SIMS">REACH SIMS</option>
+                      <option value="TEMP">Temporary Hold</option>
+                      <option value="TEST">For Testing</option>
+                      <option value="TOX">Toxicology</option>
+                      <option value="VTI">VTI</option>
+                      <option value="WPR1">REACh Subformat</option>
+                    </select>
+                  </clr-select-container>
+                  <!-- <clr-input-container>
+                      <label>Field 2 label</label>
+                      <input clrInput type="text" (ngModel)="model" name="example" />
+                  </clr-input-container> -->
+                </form>
 
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-          <div class="clr-col-lg-4 clr-col-md-8 clr-col-12">
-              <div class="card">
-
-                  <div class="card-block">
-
-                      <div class="card-text">
-                          <div class="form-group">
-                              <label>Revision Date (MM/dd/yyyy)</label>
-                              <div class="form-row">
-                                <div class="col">
-                                  <select name="reviseddate_condition" class="form-control">
-                                    <option value="eq">=</option>
-                                    <option value="gteq">&gt;=</option>
-                                    <option value="lt">&lt;</option>
-                                  </select>
-                                </div>
-                                <div class="col-8">
-                                    <clr-date-container>
-
-                                        <input type="date" name="date" (ngModel)="date" clrDate>
-                                    </clr-date-container>
-
-                                </div>
-                              </div>
-                            </div>
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-          <div class="clr-col-lg-4 clr-col-md-8 clr-col-12">
-              <div class="card">
-
-                  <div class="card-block">
-                      <div class="card-title">
-                          Block
-                      </div>
-                      <div class="card-text">
-                          ...
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-</div>
-
-
-<section id="search-page" [ngClass]="isMobile">
-<div class="container" >
-
-  <div class="row">
-  <div class="col-md-4 col-sm-12 pl-1 pr-1">
-    <h5 class="header">Search Options</h5>
-    <div class="alert alert-info min-height" >
-      <div class="form-group m-0">
-        <label>FMC Business</label>
-        <select id="plant" name="plant" class="form-control">
-          <option value="-1">
-            All
-          </option>
-          <option value="APG-APG">APG</option>
-          <option value="CPG-ACD">Alkali</option>
-          <option value="CPG-ESD">Environmental Solutions</option>
-          <option value="CPG-NXD">Natronx</option>
-          <option value="CPG-PXD">Peroxygens</option>
-          <option value="SCG-BIO">Biopolymer</option>
-          <option value="WERCS">The Wercs, Ltd.</option>
-        </select>
-      </div>
-      <div class="form-group m-0">
-        <label>Language</label>
-        <select id="language" name="language" class="form-control">
-          <option value="-1">
-            All
-          </option>
-          <option selected="" value="EN">AMERICAN ENGLISH</option>
-          <option value="AR">ARABIC</option>
-          <option value="AT">AUSTRIAN GERMAN</option>
-          <option value="BD">BELGIAN DUTCH</option>
-          <option value="BF">BELGIAN FRENCH</option>
-          <option value="BR">BRAZILIAN PORTUGUESE</option>
-          <option value="BE">BRITISH ENGLISH</option>
-          <option value="BG">BULGARIAN</option>
-          <option value="CF">CANADIAN FRENCH</option>
-          <option value="TA">CHIN. TRADITIONAL</option>
-          <option value="CN">CHINESE SIMPLIFIED</option>
-          <option value="CR">CROATIAN</option>
-          <option value="CS">CZECH</option>
-          <option value="DA">DANISH</option>
-          <option value="NL">DUTCH</option>
-          <option value="ET">ESTONIAN</option>
-          <option value="FI">FINNISH</option>
-          <option value="FR">FRENCH</option>
-          <option value="DE">GERMAN</option>
-          <option value="EL">GREEK</option>
-          <option value="HB">HEBREW</option>
-          <option value="HI">HINDI</option>
-          <option value="HU">HUNGARIAN</option>
-          <option value="ID">INDONESIAN</option>
-          <option value="GA">IRISH ENGLISH</option>
-          <option value="IT">ITALIAN</option>
-          <option value="JP">JAPANESE</option>
-          <option value="KO">KOREAN</option>
-          <option value="LV">LATVIAN</option>
-          <option value="LT">LITHUANIAN</option>
-          <option value="MA">MALAYSIAN</option>
-          <option value="MS">MEXICAN SPANISH</option>
-          <option value="NO">NORWEGIAN</option>
-          <option value="PL">POLISH</option>
-          <option value="PT">PORTUGUESE</option>
-          <option value="RO">ROMANIAN</option>
-          <option value="RU">RUSSIAN</option>
-          <option value="SR">SERBIAN</option>
-          <option value="SK">SLOVAKIAN</option>
-          <option value="SN">SLOVENIAN</option>
-          <option value="ES">SPANISH</option>
-          <option value="SV">SWEDISH</option>
-          <option value="SF">SWISS FRENCH</option>
-          <option value="SG">SWISS GERMAN</option>
-          <option value="SI">SWISS ITALIAN</option>
-          <option value="TH">THAILAND</option>
-          <option value="TR">TURKISH</option>
-          <option value="UK">UKRAINE</option>
-          <option value="VI">VIETNAMESE</option>
-        </select>
-      </div>
-
-
-      <div class="form-row">
-        <div class="col">
-          <div class="form-group m-0">
-            <label>Format</label>
-            <select id="format" name="format" class="form-control">
-              <option value="-1">
-                All
-              </option>
-              <option value="AMS">AMS</option>
-              <option value="BRZ">Brazil</option>
-              <option value="CHN">China</option>
-              <option value="JAP">Japan</option>
-              <option value="KOR">Korea</option>
-              <option value="LEG">Legacy Formats</option>
-              <option value="MTR">Global Format - Master</option>
-            </select>
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group m-0">
-            <label>Sub Format</label>
-            <select id="subformat" name="subformat" class="form-control">
-              <option value="-1">
-                All
-              </option>
-              <option value="AGAP">APG Asia Pacific</option>
-              <option value="AGCA">APG Canada</option>
-              <option value="AGCL">APG CLP GHS</option>
-              <option value="AGCP">AG COPY TEMPLATE</option>
-              <option value="AGDR">APG Data Review</option>
-              <option value="AGEU">APG EU SDS</option>
-              <option value="AGHS">--- OSHA GHS ---</option>
-              <option value="AGMX">APG Mexico</option>
-              <option value="AGNA">APG North America</option>
-              <option value="AGRA">APG Regulatory Analysis</option>
-              <option value="AGSR">APG SDS Request Form</option>
-              <option value="AGUK">AGUK-LABEL</option>
-              <option value="ALC">America, Latin and Central</option>
-              <option value="ALT">Alternatives saved as options</option>
-              <option value="AMS">Default AMS subformat</option>
-              <option value="APCN">China</option>
-              <option value="APHS">APG GHS NA</option>
-              <option value="APJP">Japan</option>
-              <option value="APKO">Korea</option>
-              <option value="APR">Approval Summary</option>
-              <option value="ASAP">Ag Solutions Asia Pacific</option>
-              <option value="ASJP">Ag Solutions Japan GHS</option>
-              <option value="ASKR">Ag Solutions Korea</option>
-              <option value="ASLA">Ag Solutions Latin America</option>
-              <option value="ASNA">Ag Solutions North America</option>
-              <option value="AUS">Australia, New Zealand</option>
-              <option value="AUST">Australia preGHS</option>
-              <option value="BGHS">--- Brazil GHS ---</option>
-              <option value="BPAP">BioPolymer Asia Pacific</option>
-              <option value="BPCL">BioP CLP GHS</option>
-              <option value="BPDR">BioPolymer Data Review</option>
-              <option value="BPEU">BioP EU REACH SDS</option>
-              <option value="BPNA">BioPolymer North American MSDS</option>
-              <option value="BPRA">BioPolymer Regulatory Analysis</option>
-              <option value="BPSR">BioPolymer SDS Request Form</option>
-              <option value="BRZ">Default BRZ subformat</option>
-              <option value="CGHS">--- China GHS ---</option>
-              <option value="CHN">Default CHN subformat</option>
-              <option value="CLP1">CLP</option>
-              <option value="CMA">Raw Material Introduction</option>
-              <option value="COPY">COPY Subformat - Peroxychem</option>
-              <option value="CPAP">CPG Asia Pacific</option>
-              <option value="CPCL">CPG CLP GHS</option>
-              <option value="CPDR">CPG Data Review</option>
-              <option value="CPEU">CPG EU REACh Subformat</option>
-              <option value="CPGH">CPNA GHS</option>
-              <option value="CPNA">CPG North American MSDS</option>
-              <option value="CPRA">CPG Regulatory Analysis</option>
-              <option value="CPSR">CPG SDS Request Form</option>
-              <option value="DATA">ANALYSIS</option>
-              <option value="EGHS">--- EU GHS ---</option>
-              <option value="ESDS">Experimental SDSs</option>
-              <option value="ESN">Exposure Scenario 2</option>
-              <option value="EU">EU REACH SDS</option>
-              <option value="EUAL">EU - Incl ALL national codes</option>
-              <option value="EUEX">EU Experimental SDSs</option>
-              <option value="EXSC">Exposure Scenarios (MTR/EXSC)</option>
-              <option value="FSDS">Demonstration Only</option>
-              <option value="GHAC">GHAC</option>
-              <option value="GHAP">GHS AP</option>
-              <option value="GHBC">GHS Supplemental for Brazil</option>
-              <option value="GHJC">GHS Supplemental for Japan</option>
-              <option value="GHKC">GHS Supplemental for Korea</option>
-              <option value="GHOC">GHS Supplemental for China</option>
-              <option value="GHS">Japan GHS</option>
-              <option value="GHS">Korean GHS</option>
-              <option value="GHS">Globally Harmonized System</option>
-              <option value="GHSC">GHS Substance Classifications</option>
-              <option value="GHSZ">GHS Substance Classifications</option>
-              <option value="HNHS">Health &amp; Nutrition GHS</option>
-              <option value="IUC">IUCLID Holding</option>
-              <option value="JAP">Default JAP subformat</option>
-              <option value="JGHS">--- Japan GHS ---</option>
-              <option value="KGHS">--- Korea GHS ---</option>
-              <option value="KIT">Appended MSDS</option>
-              <option value="KOR">Default KOR subformat</option>
-              <option value="LBL">Label</option>
-              <option value="LEG">Default LEG subformat</option>
-              <option value="NAGH">North America GHS</option>
-              <option value="NAM">North America</option>
-              <option value="OAGH">AGHS Original</option>
-              <option value="RCHZ">HN REGULATORY DATA</option>
-              <option value="REG">Regulatory Analysis</option>
-              <option value="RULE">Rules Subformat</option>
-              <option value="SARA">DATA REQUIRED FOR SARA</option>
-              <option value="SDSR">SDS Request Form</option>
-              <option value="SIMS">REACH SIMS</option>
-              <option value="TEMP">Temporary Hold</option>
-              <option value="TEST">For Testing</option>
-              <option value="TOX">Toxicology</option>
-              <option value="VTI">VTI</option>
-              <option value="WPR1">REACh Subformat</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-4 col-sm-12 pl-1 pr-1">
-    <!-- or sections -->
-    <div class="or-sections min-height">
-      <div class="alert alert-info m-0">
-        <div class="form-group">
-          <label>Revision Date (MM/dd/yyyy)</label>
-          <div class="form-row">
-            <div class="col">
-              <select name="reviseddate_condition" class="form-control">
-                <option value="eq">=</option>
-                <option value="gteq">&gt;=</option>
-                <option value="lt">&lt;</option>
-              </select>
-            </div>
-            <div class="col-8">
-                <clr-date-container>
-                    <label>Enter Date</label>
-                    <input type="date" name="date" (ngModel)="date" clrDate>
-                </clr-date-container>
-              <!-- <input id="reviseddate1" name="reviseddate" placeholder="MM-DD-YYYY" clrDate (selected)="selectedDate($event, daterange, 'reviseddate')"  autocomplete="Off" class="form-control" type="text"> -->
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row custom-checkbox">
-            <div class="col-7">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="reviseddate_last" name="reviseddate_last">
-                <label class="custom-control-label" for="reviseddate_last">Revision date in last </label>
               </div>
             </div>
-            <div class="col-5">
-              <div class="input-group">
-                <input type="text" class="form-control" maxlength="3" id="inlineFormInputGroup" placeholder="eg : 15" value="15">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">Days</div>
+
+          </div>
+        </div>
+        <div class="clr-col-lg-4 clr-col-md-8 clr-col-12">
+          <div class="card">
+
+            <div class="card-header">Revision/Published Date</div>
+            <div class="card-block min-height card-2">
+
+              <div class="revision">
+
+                <div class="clr-row">
+                  <div class="clr-col-6">
+                    <clr-select-container>
+                      <label>Revision Date</label>
+                      <select clrSelect name="reviseddate_condition">
+                        <option value="eq">=</option>
+                        <option value="gteq">&gt;=</option>
+                        <option value="lt">&lt;</option>
+                      </select>
+                    </clr-select-container>
+                  </div>
+                  <div class="clr-col-6">
+                    <clr-date-container>
+                      <label>Enter Date (MM/dd/yyyy)</label>
+                      <input type="date" name="date" clrDate>
+                    </clr-date-container>
+                  </div>
+                </div>
+
+
+                <div class="clr-row custom-checkbox">
+                  <div class="clr-col-4 pt-2">
+                    <clr-checkbox-wrapper>
+                      <input type="checkbox" clrCheckbox value="option1" name="reviseddate_last"/>
+                      <label>Revision date in last</label>
+                    </clr-checkbox-wrapper>
+                  </div>
+                  <div class="clr-col-5">
+                    <clr-input-container style="display: inline-block;">
+                      <input clrInput maxlength="3" name="reviseddate_days" placeholder="eg : 15" value="15"
+                             style="width: 60px!important;"/>
+                      <label>Days</label>
+                    </clr-input-container>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="or">OR</div>
-      <div class="alert alert-info" style="margin-top: 5px">
-        <div class="form-group">
-          <label>Published Date (MM/dd/yyyy)</label>
-          <div class="form-row">
-            <div class="col">
-              <select name="publisheddate_condition" class="form-control">
-                <option value="eq">=</option>
-                <option value="gteq">&gt;=</option>
-                <option value="lt">&lt;</option>
-              </select>
-            </div>
-            <div class="col-8">
-              <input id="publisheddate" name="publisheddate" placeholder="MM-DD-YYYY" daterangepicker [options]="options" (selected)="selectedDate($event, daterange, 'publisheddate')" autocomplete="Off" class="form-control" type="text">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row custom-checkbox">
-            <div class="col-7">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="publisheddate_last" name="publisheddate_last">
-                <label class="custom-control-label" for="publisheddate_last">Published date in last </label>
+
+
+              <div class="or-container">
+                <div class="or">OR</div>
               </div>
-            </div>
-            <div class="col-5">
-              <div class="input-group">
-                <input type="text" class="form-control" maxlength="3" id="inlineFormInputGroup" placeholder="eg : 15" value="15">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">Days</div>
+
+
+              <div class="publish">
+
+                <div class="clr-row">
+                  <div class="clr-col-6">
+                    <clr-select-container>
+                      <label>Publish Date</label>
+                      <select clrSelect name="reviseddate_condition">
+                        <option value="eq">=</option>
+                        <option value="gteq">&gt;=</option>
+                        <option value="lt">&lt;</option>
+                      </select>
+                    </clr-select-container>
+                  </div>
+                  <div class="clr-col-6">
+                    <clr-date-container>
+                      <label>Enter Date (MM/dd/yyyy)</label>
+                      <input type="date" name="date" clrDate>
+                    </clr-date-container>
+                  </div>
+                </div>
+
+
+                <div class="clr-row custom-checkbox">
+                  <div class="clr-col-4 pt-2">
+                    <clr-checkbox-wrapper>
+                      <input type="checkbox" clrCheckbox value="option1" name="publisheddate_last"/>
+                      <label>Publish date in last</label>
+                    </clr-checkbox-wrapper>
+                  </div>
+                  <div class="clr-col-5">
+                    <clr-input-container style="display: inline-block;">
+                      <input clrInput maxlength="3" name="publisheddate_days" placeholder="eg : 15" value="15"
+                             style="width: 60px!important;"/>
+                      <label>Days</label>
+                    </clr-input-container>
+                  </div>
                 </div>
               </div>
+
+
+            </div>
+
+          </div>
+        </div>
+        <div class="clr-col-lg-4 clr-col-md-8 clr-col-12 card-3">
+          <div class="card">
+            <div class="card-header">Product Options</div>
+            <div class="card-block min-height">
+
+              <clr-input-container>
+                <label>Product ID</label>
+                <input clrInput id="productID" placeholder="Product ID" name="productID" type="text">
+              </clr-input-container>
+
+              <div clrLayout="horizontal">
+                <clr-input-container>
+                  <label>Product Name</label>
+                  <input clrInput id="productName" placeholder="Product Name" name="productName" type="text">
+                </clr-input-container>
+
+                <clr-select-container>
+                  <select clrSelect name="productName_option">
+                    <option value="value~">Start With</option>
+                    <option value="~value~">Containing</option>
+                    <option value="value">Exact</option>
+                  </select>
+                </clr-select-container>
+              </div>
+              <div clrLayout="horizontal">
+                <clr-input-container>
+                  <label>CAS Number</label>
+                  <input clrInput type="text" name="CAS"/>
+                </clr-input-container>
+
+                <clr-input-container>
+                  <label>Chemical Name</label>
+                  <input clrInput type="text" name="CHEM"/>
+                </clr-input-container>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- alert -->
-    </div>
-    <!-- or sections -->
-  </div>
 
 
-  <div class="col-md-4 col-sm-12 pl-1 pr-1">
-    <h5 class="header">Product Options</h5>
-    <div class="alert alert-info min-height">
-      <div class="form-group mb-1 mt-1">
-        <!--          <label>Product ID</label>-->
-        <input id="productID" placeholder="Product ID" name="productID" type="text" value="" class="form-control">
-      </div>
-      <div class="form-group mb-1">
-        <!--          <label>Product Name</label>-->
-        <div class="form-row ">
-          <div class="col-7">
-            <input id="productName" placeholder="Product Name" name="productName" type="text" value="" class="form-control">
-          </div>
-          <div class="col-5">
-            <select name="productName_option" class="form-control">
-              <option value="value~">Start With</option>
-              <option value="~value~">Containing</option>
-              <option value="value">Exact</option>
-            </select>
-          </div>
+
+
+
+      <div class="clr-row mt-4">
+
+        <div class="clr-col text-center">
+          <button type="submit" class="btn btn-sm btn-primary mr-1" href="javascript:void 0" (click)="goToList()">Submit
+          </button>
+          <button type="reset" class="btn btn-sm btn-light" href="javascript:ClearForm()">Reset</button>
         </div>
+
       </div>
-      <div class="form-row mb-1">
-        <div class="col">
-          <div class="form-group m-0">
-            <!--              <label>CAS Number</label>-->
-            <input id="CAS" placeholder="CAS Number" name="CAS" type="text" value="" class="form-control">
-          </div>
+
+
+
+      <div class="clr-row mt-4" *ngIf="isMobile!=='mobile'">
+
+        <div class="clr-col text-center">
+          <br>
+          <a href="http://www.thewercs.com">
+            <img src="../../msds/assets/FMC-logo.GIF" alt="thewercs.com" border="0" height="30">
+          </a>
+          <br><br>
+          Copyright © 2019-2020 by <a href="http://www.fmc.com" target="_blank">FMC Corp</a><br>
+          All Rights Reserved.<br>
         </div>
-        <div class="col">
-          <div class="form-group m-0">
-            <!--              <label>Chemical Name</label>-->
-            <input id="CHEM" placeholder="CAS Number" name="CHEM" type="text" value="" class="form-control">
-          </div>
-        </div>
+
       </div>
+
     </div>
   </div>
-
-
-    <div class="col-sm-12 pl-1 pr-1 text-center">
-      <div class="form-group  alert alert-info p-2">
-        <button type="submit" class="btn btn-sm btn-primary mr-1" href="javascript:void 0" (click)="goToList()">Submit</button>
-        <button type="reset" class="btn btn-sm btn-light" href="javascript:ClearForm()">Reset</button>
-      </div>
-    </div>
-
-
-    <div class="col-sm-12 pl-1 pr-1 text-center footer" *ngIf="isMobile!=='mobile'">
-
-      <br>
-      <a href="http://www.thewercs.com">
-        <img src="../../msds/assets/FMC-logo.GIF" alt="thewercs.com" border="0" height="30">
-      </a>
-      <br><br>
-      Copyright © 2019-2020 by <a href="http://www.fmc.com" target="_blank">FMC Corp</a><br>
-      All Rights Reserved.<br>
-
-
-    </div>
-
-
-  </div>
-
-
-
-
 </div>
-</section>
+
+
+

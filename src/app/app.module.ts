@@ -13,15 +13,15 @@ import {SidebarModule} from 'ng-sidebar';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ItemDetailsComponent} from './item-details/item-details.component';
 import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
-import { FilterComponent } from './filter/filter.component';
+import {FilterComponent} from './filter/filter.component';
 import {Daterangepicker} from 'ng2-daterangepicker';
-import { LoaderService } from './loader/loader.service';
+import {LoaderService} from './loader/loader.service';
 import {ResultService} from './services/api/result.service';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MSDSHttpInterceptor} from './services/api/http.interceptor';
 import {HttpWrapperService} from './services/api/http-wrapper.service';
 import {ConstantService} from './services/constant.service';
-import { ClarityModule } from '@clr/angular';
+import {ClarityModule} from '@clr/angular';
 
 @NgModule({
   declarations: [

@@ -178,6 +178,22 @@ a.linkbutton a:hover{
   }
 }
 
+.btn-primary .btn, .btn.btn-primary{
+  background-color: #ff6f5e;
+  border-color: #ff6f5e;
+  &:hover{
+    background-color: #ff6f5e;
+    border-color: #ff6f5e;
+  }
+}
+
+.btn, .btn-info .btn:visited, .btn-outline-info .btn:visited, .btn-outline-primary .btn:visited, .btn-outline-secondary .btn:visited, .btn-primary-outline .btn:visited, .btn-secondary .btn:visited, .btn-secondary-outline .btn:visited, .btn.btn-info:visited, .btn.btn-outline-primary:visited, .btn.btn-outline-secondary:visited, .btn.btn-primary-outline:visited, .btn.btn-secondary-outline:visited, .btn.btn-secondary:visited, .btn:visited {
+  color: #444444;
+}
+
+.btn.btn-light{
+  border-color: #444444;
+}
 .form-control:focus{
   box-shadow: none;
 }
@@ -215,16 +231,22 @@ a.linkbutton a:hover{
 .custom-checkbox:focus{
   box-shadow: none;
 }
-
-.modal-content{
-  height: calc(100vh - 70px);
-}
-.modal-content{
-  min-width: 600px!important;
-}
+// if bootstarp
+//.modal-content{
+//  height: calc(100vh - 0px);
+//}
+//.modal-content{
+//  min-width: 600px!important;
+//}
+//.fade.in{
+//  opacity: .5!important;
+//}
+//.fade {
+//opacity: 1!important;
+//}
 iframe {
   border: none;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 0px);
 }
 
 
@@ -246,4 +268,33 @@ iframe {
   min-width: 270px;
   height: 43px;
   padding: 5px;
+}
+
+
+
+clr-modal {
+  .modal-dialog{
+    width: 100%;
+  }
+  .modal-dialog .modal-content{
+    padding: 0px;
+  }
+  .modal-header{
+    padding: 10px;
+    .modal-title{
+      font-size: 16px;
+    }
+  }
+  .modal-footer{
+    padding: 10px;
+  }
+  clr-icon{
+    float: right;
+    cursor: pointer;
+  }
+}
+.pdfViewer{
+  .modal-dialog{
+    max-width: 750px;
+  }
 }

@@ -1,19 +1,20 @@
 #search-page{
   height: calc(100vh - 84px); padding-top: 80px; width: 100%; background: #ffffff;
 }
-@media only screen and (max-width: 768px) {
-  #search-page{
-    height: 100%; padding-top: 10px; width: 100%; background: #ffffff;
-  }
-}
+
 .min-height{
-  height: 176px;
+  min-height: 230px;
 }
 .filter-content{
   padding: 0px 10px;
 }
 .or-sections{
   background: #e0e2e2;
+}
+.or-container{
+  height: 2px;
+  height: 26px;
+  width: 100%;
 }
 h4.header{
   padding: 12px 10px 11px;
@@ -75,9 +76,6 @@ label {
   margin: auto;
   border: 1px solid #ef6d5c;
   font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  margin-top: -12px;
   left: calc(50% - 15px);
 }
 
@@ -108,7 +106,6 @@ label {
 .clr-form-control
 {
   margin-top:0;
-  margin-left: 10%;
   padding:5px;
 }
 
@@ -131,4 +128,50 @@ label {
 .clr-select-wrapper select:active, .clr-select-wrapper select:hover {
   border-color: rgba(222,222,222,.5);
   background: #fff;
+}
+.clr-select{
+  width: 200px;
+}
+.clr-checkbox-wrapper input[type=checkbox]+label::before{
+  top: 0px!important;
+}
+.clr-checkbox-wrapper input[type=checkbox]+label::after{
+  top: 0px!important;
+}
+
+/*  card 3 */
+.card-3{
+  .clr-form-control{
+    width: 160px;
+    display: inline-block;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  #search-page{
+    height: 100%; padding-top: 10px; width: 100%; background: #ffffff;
+  }
+  .card-1 {
+    .clr-select, .clr-input, .clr-input-group {
+      width: 120px !important;
+    }
+  }
+  .card-2 {
+    .clr-select{
+      width: 80px!important;
+    }
+    .clr-input{
+      width: 160px!important;
+    }
+  }
+  .card-3{
+    .clr-form-control{
+      width: 120px;
+      display: inline-block;
+    }
+    .clr-select, .clr-input, .clr-input-group{
+      width: 120px!important;
+    }
+  }
 }
