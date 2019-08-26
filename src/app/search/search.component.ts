@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
   goToList() {
     this.searchService.setSearchData(this.searchData);
     this.closeModal.emit(true);
-    // this.router.navigate(['list']);
+    this.router.navigate(['list']);
   }
 
   resetFilter() {

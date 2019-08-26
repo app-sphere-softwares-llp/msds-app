@@ -53,12 +53,18 @@
     </div>
     <section class="table-contents">
 
-      <h2 class="no-data" *ngIf="filteredItems && filteredItems.length===0">No Data Found</h2>
+      <div *ngIf="showSpinner" class="d-flex flex-column align-items-center">
+        <span class="spinner spinner-lg">
+          Loading...
+        </span>
+      </div>
+
+      <h2 class="no-data" *ngIf="filteredItems && filteredItems.length===0 && !showSpinner">No Data Found</h2>
 
       <pagination *ngIf="filteredItems && filteredItems.length"
-        [itemsPerPage]="25"
-        [totalItems]="items.length"
-        (pageChanged)="pageChanged($event)"
+                  [itemsPerPage]="25"
+                  [totalItems]="items.length"
+                  (pageChanged)="pageChanged($event)"
       ></pagination>
 
       <table width="100%" class="table" *ngIf="filteredItems && filteredItems.length">

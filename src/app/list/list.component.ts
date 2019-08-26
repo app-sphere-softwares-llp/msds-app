@@ -15,6 +15,7 @@ import * as moment from 'moment';
 })
 export class ListComponent implements OnInit {
   bsModalRef: BsModalRef;
+  showSpinner: boolean = false;
 
   faBars = faBars;
   faSearch = faSearch;
@@ -238,9 +239,11 @@ export class ListComponent implements OnInit {
   }
 
   public getAll() {
+    this.showSpinner = true;
     this.resultService.getAll().subscribe(res => {
       this.items = res;
       this.filteredItems = this.items.slice(0, 20);
+      this.showSpinner = false;
     });
   }
 
