@@ -87,19 +87,20 @@ export class ListComponent implements OnInit {
     this.filteredItems = this.items.slice(startIndex, endIndex + 1);
   }
 
-  openModal(item: ListModelItem) {
-    this.pdfModal = true;
+  openModal(item: ListModelItem, showInNewTab: boolean = false) {
+    this.pdfModal = !showInNewTab;
     // @ts-ignore
     this.pdfModalData = item;
     // this.bsModalRef = this.modalService.show(ItemDetailsComponent, {class: 'modal-lg'});
     // this.bsModalRef.content.title = item.productName;
-    this.viewPDF();
+    this.viewPDF(showInNewTab);
   }
 
-  viewPDF(): void {
+  viewPDF(isNewTab: boolean): void {
     const blob: Blob = this.base64ToBlob(this.base64, 'application/pdf', 512);
     this.pdfViewer.pdfSrc = blob;
     this.pdfViewer.showSpinner = true;
+    this.pdfViewer.externalWindow = isNewTab;
     this.pdfViewer.refresh();
   }
 
