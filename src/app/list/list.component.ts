@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ListModelItem} from '../models/listModel';
 import {BsModalRef, BsModalService, PageChangedEvent} from 'ngx-bootstrap';
-import {faSearch, faBars} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faSearch} from '@fortawesome/free-solid-svg-icons';
 import {ResultService} from '../services/api/result.service';
 import {PdfJsViewerComponent} from 'ng2-pdfjs-viewer';
 import {mockPdf} from '../models/mockdata';
+import {SearchService} from "../search.service";
 
 @Component({
   selector: 'app-list',
@@ -14,7 +15,6 @@ import {mockPdf} from '../models/mockdata';
 export class ListComponent implements OnInit {
   bsModalRef: BsModalRef;
 
-
   faBars = faBars;
   faSearch = faSearch;
   public items: ListModelItem[];
@@ -23,16 +23,32 @@ export class ListComponent implements OnInit {
   public searchEditModal = false;
   public pdfModal = false;
   public pdfModalData = ListModelItem;
+  public searchData = ListModelItem;
+
+  public isFilterSearchApplied = false;
   @ViewChild(PdfJsViewerComponent, {static: true}) public pdfViewer: PdfJsViewerComponent;
   title: string;
   base64 = mockPdf;
 
-  constructor(private modalService: BsModalService, private resultService: ResultService) {
+  constructor(private modalService: BsModalService, private resultService: ResultService, private  searchService: SearchService) {
   }
 
   ngOnInit() {
     // this.filteredItems = this.items.slice(0, 20);
     this.getAll();
+    this.searchService.getSearchData().subscribe(v => {
+      this.searchData = v;
+      console.log(v);
+      this.items = this.items.filter((item) => {
+        for (const key in v) {
+          if (item[key] === undefined || item[key] !== v[key]) {
+            return false;
+          }
+        }
+        return true;
+      });
+      this.filteredItems = this.items.slice(0, 20);
+    });
   }
 
   pageChanged(event: PageChangedEvent) {
@@ -198,6 +214,5 @@ export class ListComponent implements OnInit {
       this.filteredItems = this.items.slice(0, 20);
     });
   }
-
 
 }

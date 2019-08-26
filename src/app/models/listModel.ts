@@ -55,6 +55,12 @@ export class ListModelItem {
   tradeName: string;
   validityArea: string;
   validityAreaDescription: string;
-  wercsRevisionNo:string;
+  wercsRevisionNo: string;
   wercsSubFormat: string;
+  format: string;
+  isRevisedDays: boolean;
+  isPublishDays: boolean;
+  revisionDays: number;
+  publishDays: number;
+  productNameCondition: string;
 }

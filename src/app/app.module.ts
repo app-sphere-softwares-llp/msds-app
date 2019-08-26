@@ -22,6 +22,7 @@ import {MSDSHttpInterceptor} from './services/api/http.interceptor';
 import {HttpWrapperService} from './services/api/http-wrapper.service';
 import {ConstantService} from './services/constant.service';
 import {ClarityModule} from '@clr/angular';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {ClarityModule} from '@clr/angular';
     Daterangepicker,
     BsDatepickerModule.forRoot(),
     HttpClientModule,
-    ClarityModule
+    ClarityModule,
+    FormsModule
   ],
   providers: [
     HttpWrapperService,

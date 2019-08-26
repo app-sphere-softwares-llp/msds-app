@@ -14,8 +14,8 @@
                 <form class="clr-form clr-form-horizontal">
                   <clr-select-container>
                     <label>FMC Business</label>
-                    <select clrSelect name="options" (ngModel)="options">
-                      <option value="-1">
+                    <select clrSelect name="options" [(ngModel)]="searchData.fmcBusiness">
+                      <option value="All">
                         All
                       </option>
                       <option value="APG-APG">APG</option>
@@ -29,8 +29,8 @@
                   </clr-select-container>
                   <clr-select-container>
                     <label>Language</label>
-                    <select clrSelect name="options" (ngModel)="options">
-                      <option value="-1">
+                    <select clrSelect name="options" [(ngModel)]="searchData.language">
+                      <option value="All">
                         All
                       </option>
                       <option selected="" value="EN">AMERICAN ENGLISH</option>
@@ -86,8 +86,8 @@
                   </clr-select-container>
                   <clr-select-container>
                     <label>Format</label>
-                    <select clrSelect name="options" (ngModel)="options">
-                      <option value="-1">
+                    <select clrSelect name="options" [(ngModel)]="searchData.format">
+                      <option value="All">
                         All
                       </option>
                       <option value="AMS">AMS</option>
@@ -101,8 +101,8 @@
                   </clr-select-container>
                   <clr-select-container>
                     <label>Sub Format</label>
-                    <select clrSelect name="options" (ngModel)="options">
-                      <option value="-1">
+                    <select clrSelect name="options" [(ngModel)]="searchData.wercsSubFormat">
+                      <option value="All">
                         All
                       </option>
                       <option value="AGAP">APG Asia Pacific</option>
@@ -232,23 +232,23 @@
                   <div class="clr-col-6">
                     <clr-date-container>
                       <label>Enter Date (MM/dd/yyyy)</label>
-                      <input type="date" name="date" clrDate>
+                      <input type="date" name="date" clrDate [(ngModel)]="searchData.revisionDate">
                     </clr-date-container>
                   </div>
                 </div>
 
 
                 <div class="clr-row custom-checkbox">
-                  <div class="clr-col-4 pt-2">
+                  <div class="clr-col-5 pt-2">
                     <clr-checkbox-wrapper>
-                      <input type="checkbox" clrCheckbox value="option1" name="reviseddate_last"/>
+                      <input type="checkbox" clrCheckbox value="option1" name="reviseddate_last" [(ngModel)]="searchData.isRevisedDays"/>
                       <label>Revision date in last</label>
                     </clr-checkbox-wrapper>
                   </div>
                   <div class="clr-col-5">
                     <clr-input-container style="display: inline-block;">
                       <input clrInput maxlength="3" name="reviseddate_days" placeholder="eg : 15" value="15"
-                             style="width: 60px!important;"/>
+                             style="width: 60px!important;" [(ngModel)]="searchData.revisionDays"/>
                       <label>Days</label>
                     </clr-input-container>
                   </div>
@@ -267,7 +267,7 @@
                   <div class="clr-col-6">
                     <clr-select-container>
                       <label>Publish Date</label>
-                      <select clrSelect name="reviseddate_condition">
+                      <select clrSelect name="reviseddate_condition" >
                         <option value="eq">=</option>
                         <option value="gteq">&gt;=</option>
                         <option value="lt">&lt;</option>
@@ -277,23 +277,23 @@
                   <div class="clr-col-6">
                     <clr-date-container>
                       <label>Enter Date (MM/dd/yyyy)</label>
-                      <input type="date" name="date" clrDate>
+                      <input type="date" name="date" clrDate [(ngModel)]="searchData.publishDate">
                     </clr-date-container>
                   </div>
                 </div>
 
 
                 <div class="clr-row custom-checkbox">
-                  <div class="clr-col-4 pt-2">
+                  <div class="clr-col-5 pt-2">
                     <clr-checkbox-wrapper>
-                      <input type="checkbox" clrCheckbox value="option1" name="publisheddate_last"/>
+                      <input type="checkbox" clrCheckbox value="option1" name="publisheddate_last" [(ngModel)]="searchData.isPublishDays"/>
                       <label>Publish date in last</label>
                     </clr-checkbox-wrapper>
                   </div>
                   <div class="clr-col-5">
                     <clr-input-container style="display: inline-block;">
                       <input clrInput maxlength="3" name="publisheddate_days" placeholder="eg : 15" value="15"
-                             style="width: 60px!important;"/>
+                             style="width: 60px!important;" [(ngModel)]="searchData.publishDays"/>
                       <label>Days</label>
                     </clr-input-container>
                   </div>
@@ -312,17 +312,17 @@
 
               <clr-input-container>
                 <label>Product ID</label>
-                <input clrInput id="productID" placeholder="Product ID" name="productID" type="text">
+                <input clrInput id="productID" placeholder="Product ID" name="productID" type="text" [(ngModel)]="searchData.specificationID">
               </clr-input-container>
 
               <div clrLayout="horizontal">
                 <clr-input-container>
                   <label>Product Name</label>
-                  <input clrInput id="productName" placeholder="Product Name" name="productName" type="text">
+                  <input clrInput id="productName" placeholder="Product Name" name="productName" type="text" [(ngModel)]="searchData.productName">
                 </clr-input-container>
 
                 <clr-select-container>
-                  <select clrSelect name="productName_option">
+                  <select clrSelect name="productName_option" [(ngModel)]="searchData.productNameCondition">
                     <option value="value~">Start With</option>
                     <option value="~value~">Containing</option>
                     <option value="value">Exact</option>
@@ -332,12 +332,12 @@
               <div clrLayout="horizontal">
                 <clr-input-container>
                   <label>CAS Number</label>
-                  <input clrInput type="text" name="CAS"/>
+                  <input clrInput type="text" name="CAS" [(ngModel)]="searchData.casNumber"/>
                 </clr-input-container>
 
                 <clr-input-container>
                   <label>Chemical Name</label>
-                  <input clrInput type="text" name="CHEM"/>
+                  <input clrInput type="text" name="CHEM" [(ngModel)]="searchData.chemicalName"/>
                 </clr-input-container>
               </div>
             </div>
@@ -354,7 +354,7 @@
         <div class="clr-col text-center">
           <button type="submit" class="btn btn-sm btn-primary mr-1" href="javascript:void 0" (click)="goToList()">Submit
           </button>
-          <button type="reset" class="btn btn-sm btn-light" href="javascript:ClearForm()">Reset</button>
+          <button type="reset" class="btn btn-sm btn-light" href="javascript:ClearForm()" (click)="resetFilter()">Reset</button>
         </div>
 
       </div>
