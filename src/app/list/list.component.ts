@@ -5,7 +5,8 @@ import {faBars, faSearch} from '@fortawesome/free-solid-svg-icons';
 import {ResultService} from '../services/api/result.service';
 import {PdfJsViewerComponent} from 'ng2-pdfjs-viewer';
 import {mockPdf} from '../models/mockdata';
-import {SearchService} from "../search.service";
+import {SearchService} from '../search.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-list',
@@ -17,7 +18,7 @@ export class ListComponent implements OnInit {
 
   faBars = faBars;
   faSearch = faSearch;
-  public items: ListModelItem[];
+  public items: ListModelItem[] = [];
   public filteredItems: ListModelItem[] = [];
   public isMobile: string = 'mobile';
   public searchEditModal = false;
@@ -38,16 +39,44 @@ export class ListComponent implements OnInit {
     this.getAll();
     this.searchService.getSearchData().subscribe(v => {
       this.searchData = v;
-      console.log(v);
-      this.items = this.items.filter((item) => {
-        for (const key in v) {
-          if (item[key] === undefined || item[key] !== v[key]) {
-            return false;
+      const allowedFilterCols = ['productName', 'wercsSubFormat', 'language', 'publishDate', 'revisionDate', 'specificationID'];
+      this.filteredItems = this.items.filter((item) => {
+        const resArr = [];
+        Object.keys(v).filter(f => allowedFilterCols.includes(f)).forEach(key => {
+          // for date related things
+          if (key === 'publishDate' || key === 'revisionDate') {
+            const filterType = v[`${key}FilterType`];
+            switch (filterType) {
+              case 'eq':
+                resArr.push(moment(item[key], 'DD-MM-YYYY').isSame(moment(v[key], 'DD-MM-YYYY')));
+                break;
+              case 'gteq':
+                resArr.push(moment(item[key], 'DD-MM-YYYY').isSameOrAfter(moment(v[key], 'DD-MM-YYYY')));
+                break;
+              case 'lt':
+                resArr.push(moment(item[key], 'DD-MM-YYYY').isSameOrBefore(moment(v[key], 'DD-MM-YYYY')));
+                break;
+              default:
+                resArr.push(false);
+            }
+          } else {
+            if (v[key] === 'All') {
+              resArr.push(true);
+            } else {
+              resArr.push((item[key] || '').toLowerCase().indexOf((v[key] || '').toLowerCase()) > -1);
+            }
           }
-        }
-        return true;
+        });
+        return resArr.every(s => s);
+
+        // for (const key in v) {
+        //   if (item[key] === undefined || item[key] !== v[key]) {
+        //     return false;
+        //   }
+        // }
+        // return true;
       });
-      this.filteredItems = this.items.slice(0, 20);
+      this.filteredItems = this.filteredItems.slice(0, 20);
     });
   }
 
@@ -95,7 +124,7 @@ export class ListComponent implements OnInit {
   }
 
 
-  editSearch(item: ListModelItem) {
+  editSearch() {
     this.searchEditModal = true;
   }
 

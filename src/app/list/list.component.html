@@ -118,7 +118,7 @@
     <clr-icon aria-hidden="true" (click)="cancel()" shape="close"></clr-icon>
   </h4>
   <div class="modal-body p-0">
-    <app-search [isMobile]="isMobile"></app-search>
+    <app-search [isMobile]="isMobile" (closeModal)="searchEditModal = !searchEditModal"></app-search>
   </div>
 </clr-modal>
 

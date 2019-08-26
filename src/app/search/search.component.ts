@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import * as moment from 'moment';
-import {ListModelItem} from "../models/listModel";
+import {ListModelItem} from '../models/listModel';
 import {SearchService} from '../search.service';
 
 @Component({
@@ -11,14 +11,15 @@ import {SearchService} from '../search.service';
 })
 export class SearchComponent implements OnInit {
   @Input() isMobile: string;
+  @Output() closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
   public daterange: any = {};
   public searchData: ListModelItem;
   public options: any = {
     locale: {format: 'MM-DD-YYYY'},
     alwaysShowCalendars: false,
     ranges: {
-      'Today': [moment(), moment()],
-      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      Today: [moment(), moment()],
+      Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
       'This Month': [moment().startOf('month'), moment().endOf('month')],
@@ -42,7 +43,8 @@ export class SearchComponent implements OnInit {
 
   goToList() {
     this.searchService.setSearchData(this.searchData);
-    this.router.navigate(['list']);
+    this.closeModal.emit(true);
+    // this.router.navigate(['list']);
   }
 
   resetFilter() {

@@ -50,7 +50,9 @@ export class ListModelItem {
   pdfName: string;
   productName: string;
   publishDate: string;
+  publishDateFilterType: string;
   revisionDate: string;
+  revisionDateFilterType: string;
   specificationID: string;
   tradeName: string;
   validityArea: string;

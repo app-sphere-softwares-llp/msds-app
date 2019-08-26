@@ -222,7 +222,7 @@
                   <div class="clr-col-6">
                     <clr-select-container>
                       <label>Revision Date</label>
-                      <select clrSelect name="reviseddate_condition">
+                      <select clrSelect name="reviseddate_condition" [(ngModel)]="searchData.revisionDateFilterType">
                         <option value="eq">=</option>
                         <option value="gteq">&gt;=</option>
                         <option value="lt">&lt;</option>
@@ -267,7 +267,7 @@
                   <div class="clr-col-6">
                     <clr-select-container>
                       <label>Publish Date</label>
-                      <select clrSelect name="reviseddate_condition" >
+                      <select clrSelect name="reviseddate_condition" [(ngModel)]="searchData.publishDateFilterType">
                         <option value="eq">=</option>
                         <option value="gteq">&gt;=</option>
                         <option value="lt">&lt;</option>
