@@ -102,3 +102,33 @@ label {
   max-width: 320px!important;
   flex: 100%;
 }
+
+
+// New Design
+.clr-form-control
+{
+  margin-top:0;
+  margin-left: 10%;
+  padding:5px;
+}
+
+.clr-form-horizontal .clr-form-control>.clr-control-label
+{
+  width: 4rem;
+}
+
+.clr-control-container
+{
+  width:100% !important;
+
+}
+
+.clr-input
+{
+  width: 100%;
+}
+
+.clr-select-wrapper select:active, .clr-select-wrapper select:hover {
+  border-color: rgba(222,222,222,.5);
+  background: #fff;
+}

@@ -19,8 +19,9 @@ import { LoaderService } from './loader/loader.service';
 import {ResultService} from './services/api/result.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MSDSHttpInterceptor} from './services/api/http.interceptor';
-import {HttpWrapperService} from "./services/api/http-wrapper.service";
-import {ConstantService} from "./services/constant.service";
+import {HttpWrapperService} from './services/api/http-wrapper.service';
+import {ConstantService} from './services/constant.service';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {ConstantService} from "./services/constant.service";
     PdfJsViewerModule,
     Daterangepicker,
     BsDatepickerModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ClarityModule
   ],
   providers: [
     HttpWrapperService,
