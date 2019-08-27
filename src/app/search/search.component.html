@@ -230,10 +230,11 @@
                     </clr-select-container>
                   </div>
                   <div class="clr-col-6">
-                    <clr-date-container>
-                      <label>Enter Date (MM/dd/yyyy)</label>
-                      <input type="date" name="date" clrDate [(ngModel)]="searchData.revisionDate">
-                    </clr-date-container>
+                    <input type="text" name="daterangeInput" daterangepicker [options]="options"/>
+<!--                    <clr-date-container>-->
+<!--                      <label>Enter Date (MM/dd/yyyy)</label>-->
+<!--                      <input type="date" name="date" clrDate [(ngModel)]="searchData.revisionDate">-->
+<!--                    </clr-date-container>-->
                   </div>
                 </div>
 
