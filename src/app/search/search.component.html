@@ -222,15 +222,17 @@
                   <div class="clr-col-6">
                     <clr-select-container>
                       <label>Revision Date</label>
-                      <select clrSelect name="reviseddate_condition" [(ngModel)]="searchData.revisionDateFilterType">
+                      <select clrSelect name="reviseddate_condition" (change)="selectDateCondition('rev', $event)" [(ngModel)]="searchData.revisionDateFilterType">
                         <option value="eq">=</option>
                         <option value="gteq">&gt;=</option>
                         <option value="lt">&lt;</option>
+                        <option value="range">Date Range</option>
                       </select>
                     </clr-select-container>
                   </div>
                   <div class="clr-col-6">
-                    <input type="text" name="daterangeInput" daterangepicker [options]="options"/>
+                    <label>Enter Date (MM/dd/yyyy)</label>
+                    <input type="text" name="RevisionDaterangeInput" #RevisionDaterangeInput class="daterangepicker-focus" (applyDaterangepicker)="selectedDate($event, 'rev')" [(ngModel)]="searchData.revisionDate" (focus)="changeCss('rev')" daterangepicker [options]="optionsRevision"/>
 <!--                    <clr-date-container>-->
 <!--                      <label>Enter Date (MM/dd/yyyy)</label>-->
 <!--                      <input type="date" name="date" clrDate [(ngModel)]="searchData.revisionDate">-->
@@ -268,18 +270,21 @@
                   <div class="clr-col-6">
                     <clr-select-container>
                       <label>Publish Date</label>
-                      <select clrSelect name="reviseddate_condition" [(ngModel)]="searchData.publishDateFilterType">
+                      <select clrSelect name="reviseddate_condition" (change)="selectDateCondition('pub', $event)" [(ngModel)]="searchData.publishDateFilterType">
                         <option value="eq">=</option>
                         <option value="gteq">&gt;=</option>
                         <option value="lt">&lt;</option>
+                        <option value="range">Date Range</option>
                       </select>
                     </clr-select-container>
                   </div>
                   <div class="clr-col-6">
-                    <clr-date-container>
-                      <label>Enter Date (MM/dd/yyyy)</label>
-                      <input type="date" name="date" clrDate [(ngModel)]="searchData.publishDate">
-                    </clr-date-container>
+                    <label>Enter Date (MM/dd/yyyy)</label>
+                    <input type="text" name="PublishDaterangeInput" class="daterangepicker-focus" (applyDaterangepicker)="selectedDate($event, 'pub')" [(ngModel)]="searchData.publishDate" (focus)="changeCss('pub')" daterangepicker [options]="optionsPublish"/>
+<!--                    <clr-date-container>-->
+<!--                      <label>Enter Date (MM/dd/yyyy)</label>-->
+<!--                      <input type="date" name="date" clrDate [(ngModel)]="searchData.publishDate">-->
+<!--                    </clr-date-container>-->
                   </div>
                 </div>
 

@@ -4,6 +4,7 @@
 	Global TAG styles
 \************************************************/
 
+
 /* latin-ext */
 @font-face {
   font-family: 'Lato';
@@ -12,6 +13,7 @@
   src: local('Lato Regular'), local('Lato-Thin'), url(assets/Lato-Thin.ttf) format('truetype');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
   font-family: 'Lato';
@@ -29,6 +31,7 @@
   src: local('Lato Regular'), local('Lato-Regular'), url(assets/Lato-Regular.ttf) format('truetype');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
   font-family: 'Lato';
@@ -37,6 +40,7 @@
   src: local('Lato Regular'), local('Lato-Regular'), url(assets/Lato-Regular.ttf) format('truetype');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 /* latin-ext */
 @font-face {
   font-family: 'Lato';
@@ -45,6 +49,7 @@
   src: local('Lato Bold'), local('Lato-Bold'), url(assets/Lato-Bold.ttf) format('truetype');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+
 /* latin */
 @font-face {
   font-family: 'Lato';
@@ -54,59 +59,81 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-*{
-  outline: none!important;
+* {
+  outline: none !important;
 }
-body{
+
+body {
   font-family: Lato;
   margin: 0px;
 }
-body.help{
+
+body.help {
   margin: 6px;
 }
-a{
+
+a {
   color: #36a1e9;
 }
-a:hover{
+
+a:hover {
   color: #2a8cce;
 }
-h1{ margin-top: 0px; margin-bottom: 0px; }
-h2{ margin-top: 0px; margin-bottom: 0px; }
-h3{ margin-top: 0px; margin-bottom: 0px; }
-h4{ margin-top: 0px; margin-bottom: 0px; }
 
-hr{
+h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+hr {
   color: #336699;
 }
 
-.table td ,.table th{
-  padding: 1.5px 5px!important;
-  border: 1px solid #bfbfbf!important;
-  font-size: 14px!important;
+.table td, .table th {
+  padding: 1.5px 5px !important;
+  border: 1px solid #bfbfbf !important;
+  font-size: 14px !important;
 }
+
 .table th {
-  background: #ff6f5e!important;
-  color: #ffffff!important;
-  border-bottom-color: #ff6f5e!important;
-  border-top-color: #ff6f5e!important;
-  padding: 3px 6px!important;
-  font-weight: bold!important;
+  background: #ff6f5e !important;
+  color: #ffffff !important;
+  border-bottom-color: #ff6f5e !important;
+  border-top-color: #ff6f5e !important;
+  padding: 3px 6px !important;
+  font-weight: bold !important;
 }
 
 /************************************************\
 	General pattern styles
 \************************************************/
-@media print{
-  .NoPrint{ display: none; }
+@media print {
+  .NoPrint {
+    display: none;
+  }
 }
 
-.label, .label td{
+.label, .label td {
   font-weight: bold;
 }
 
-.leftalign
-{
-  text-align:left;
+.leftalign {
+  text-align: left;
 }
 
 .detailLabel {
@@ -114,74 +141,90 @@ hr{
   color: #336699;
 }
 
-.ErrLabel
-{
+.ErrLabel {
   font-weight: bold;
-  font-size:medium;
-  color:Red;
+  font-size: medium;
+  color: Red;
 }
 
 
-.item{ background-color: #ffffff;vertical-align:top;  }
-.altitem{vertical-align:top;}
-.selected{ background-color: #99ccff; }
-.error{ color: #ff0000; font-weight: bold; }
+.item {
+  background-color: #ffffff;
+  vertical-align: top;
+}
 
-a.linkbutton
-{
+.altitem {
+  vertical-align: top;
+}
+
+.selected {
+  background-color: #99ccff;
+}
+
+.error {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+a.linkbutton {
   padding: 0 10px;
   border: 1px solid #9aafe5;
-  border-style:outset;
-  background-color:#dddddd;
+  border-style: outset;
+  background-color: #dddddd;
   text-decoration: none;
-  color:black;
-  font-weight:bold;
+  color: black;
+  font-weight: bold;
 }
 
-a.linkbutton a:hover{
+a.linkbutton a:hover {
   border: 1px solid #2b66a5;
   color: #ff6b08;
   background-color: #bbbbbb;
 }
 
-.hover
-{
-  cursor:pointer;
+.hover {
+  cursor: pointer;
 }
 
 .ng-sidebar {
   border-right: 1px #f8f7f3 solid;
-  width:320px;
+  width: 320px;
 }
-.uppercase{
+
+.uppercase {
   text-transform: uppercase;
 }
 
-.no-data{
+.no-data {
   text-align: center;
   color: #b9babb;
   padding: 100px 0px;
 }
+
 /* Bootstrap */
-.text-primary{
-  color: #ff6f5e!important;
+.text-primary {
+  color: #ff6f5e !important;
 }
-.btn:focus{
-    box-shadow: none!important;
+
+.btn:focus {
+  box-shadow: none !important;
 }
-.btn-primary{
+
+.btn-primary {
   background-color: #ff6f5e;
   border-color: #ff6f5e;
-  &:hover{
+
+  &:hover {
     background-color: #ff6f5e;
     border-color: #ff6f5e;
   }
 }
 
-.btn-primary .btn, .btn.btn-primary{
+.btn-primary .btn, .btn.btn-primary {
   background-color: #ff6f5e;
   border-color: #ff6f5e;
-  &:hover{
+
+  &:hover {
     background-color: #ff6f5e;
     border-color: #ff6f5e;
   }
@@ -191,10 +234,11 @@ a.linkbutton a:hover{
   color: #444444;
 }
 
-.btn.btn-light{
+.btn.btn-light {
   border-color: #444444;
 }
-.form-control:focus{
+
+.form-control:focus {
   box-shadow: none;
 }
 
@@ -202,14 +246,16 @@ a.linkbutton a:hover{
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  color:#777777;
+  color: #777777;
 }
+
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
   background-color: #ff6f5e;
   border-color: #ff6f5e;
 }
+
 .page-link:hover {
   z-index: 2;
   color: #ffffff;
@@ -217,20 +263,25 @@ a.linkbutton a:hover{
   background-color: #ff6f5e;
   border-color: #ff6f5e;
 }
-.pagination{
-  margin-top:10px ;
-  margin-bottom:10px ;
+
+.pagination {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
 .custom-control-label::before {
   top: 0px;
   border: 1px solid #333333;
 }
+
 .custom-control-label::after {
   top: 0px;
 }
-.custom-checkbox:focus{
+
+.custom-checkbox:focus {
   box-shadow: none;
 }
+
 // if bootstarp
 //.modal-content{
 //  height: calc(100vh - 0px);
@@ -249,21 +300,132 @@ iframe {
   height: calc(100vh - 0px);
 }
 
+.show-visibility {
+  visibility: visible !important;
+  flex-direction: initial !important;
+}
+.display-block{
+  display: block!important;
+}
+.display-none{
+  display: display-none!important;
+}
 
+.daterangepicker .calendar td, .daterangepicker .calendar th {
+  font-size: 12px;
+}
+
+.daterangepicker .input-mini {
+  margin: 0 0 0px;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #ef6d5c !important;
+  color: #ef6d5c;
+}
+
+.daterangepicker-focus {
+  border: none;
+  border-bottom: 1px solid #999999;
+  font-size: 12px;
+  min-width: 150px;
+  padding: 0px;
+  height: 20px;
+}
+
+.daterangepicker .ranges {
+  width: 160px !important;
+}
+
+.ranges ul {
+  padding: 0 !important;
+}
+
+.ranges ul > li {
+  padding: 0px 12px;
+  color: #525252 !important;
+  background: #f5f5f5 !important;
+  border: 1px solid #f5f5f5 !important;
+  padding: 0px 12px;
+  margin-bottom: 5px;
+}
+
+.ranges li.active, .ranges li:hover {
+  background: #ff6f5e !important;
+  border: 1px solid #ff6f5e !important;
+  color: #fff !important;
+}
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+  background-color: #ff6f5e;
+  border-color: transparent;
+  color: #fff;
+}
+
+.active.end-date.in-range.available, .daterangepicker td.start-date {
+  background: #ff6f5e !important;
+  color: #fff;
+  border-radius: 2px;
+}
+
+.daterangepicker td.off, .daterangepicker td.off.end-date, .daterangepicker td.off.in-range, .daterangepicker td.off.start-date {
+  background-color: #fff;
+  border-color: transparent;
+  color: #fff;
+}
+
+.daterangepicker td.in-range {
+  background-color: #ef6c5c1c!important;
+  border-color: transparent;
+}
+.daterangepicker th.month {
+  line-height: normal!important;
+}
+
+.daterangepicker_input .glyphicon-calendar{
+  display: none;
+}
+
+.daterangepicker th.month {
+  width: auto;
+  font-weight: normal;
+  color: #8e8c8c;
+}
+.range_inputs {
+  .btn {
+    display: inline-block;
+    width: auto;
+  }
+
+  .btn-success {
+    background: #e5e5e5!important;
+    color: #28ab00!important;
+    padding: 3px 8px;
+    text-align: center;
+    &:hover{
+      background: #28ab00!important;
+      color: #e5e5e5!important;
+    }
+  }
+}
 
 /* ngx bootstrap */
-.bs-datepicker-container{
-  padding: 0px!important;
+.bs-datepicker-container {
+  padding: 0px !important;
 }
+
 .theme-green .bs-datepicker-head {
   background-color: #ff6f5e;
 }
-.theme-green .bs-datepicker-body table td.week span{
+
+.theme-green .bs-datepicker-body table td.week span {
   color: #ff6f5e;
 }
+
 .theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span, .theme-green .bs-datepicker-body table td span[class*="select-"]:after, .theme-green .bs-datepicker-body table td[class*="select-"] span:after {
   background-color: #ff6f5e;
 }
+
 .bs-datepicker-head {
   min-width: 270px;
   height: 43px;
@@ -271,30 +433,36 @@ iframe {
 }
 
 
-
 clr-modal {
-  .modal-dialog{
+  .modal-dialog {
     width: 100%;
   }
-  .modal-dialog .modal-content{
+
+  .modal-dialog .modal-content {
     padding: 0px;
   }
-  .modal-header{
+
+  .modal-header {
     padding: 10px;
-    .modal-title{
+
+    .modal-title {
       font-size: 16px;
     }
   }
-  .modal-footer{
+
+  .modal-footer {
     padding: 10px;
   }
-  clr-icon{
+
+  clr-icon {
     float: right;
     cursor: pointer;
   }
 }
-.pdfViewer{
-  .modal-dialog{
+
+.pdfViewer {
+  .modal-dialog {
     max-width: 750px;
   }
 }
+

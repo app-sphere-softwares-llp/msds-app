@@ -1,8 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import * as moment from 'moment';
 import {ListModelItem} from '../models/listModel';
 import {SearchService} from '../search.service';
+import {DaterangePickerComponent} from 'ng2-daterangepicker';
+
+const MSDP_DATE_FORMAT = 'MM/DD/YYYY';
 
 @Component({
   selector: 'app-search',
@@ -12,11 +15,20 @@ import {SearchService} from '../search.service';
 export class SearchComponent implements OnInit {
   @Input() isMobile: string;
   @Output() closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public daterange: any = {};
+  // @ts-ignore
+  @ViewChild(DaterangePickerComponent)
+  private picker: DaterangePickerComponent;
+
+  // @ts-ignore
+  @ViewChild('RevisionDaterangeInput') RevisionDaterangeInput: ElementRef;
+
+
   public searchData: ListModelItem;
-  public options: any = {
-    locale: {format: 'MM-DD-YYYY'},
+  public optionsRevision: any = {
+    locale: {format: MSDP_DATE_FORMAT},
     alwaysShowCalendars: false,
+    singleDatePicker: false,
+    selector: 'rev',
     ranges: {
       Today: [moment(), moment()],
       Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -26,50 +38,104 @@ export class SearchComponent implements OnInit {
       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
     }
   };
+  public optionsPublish: any = {
+    locale: {format: MSDP_DATE_FORMAT},
+    alwaysShowCalendars: false,
+    singleDatePicker: false,
+    ranges: {
+      Today: [moment(), moment()],
+      Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+      'This Month': [moment().startOf('month'), moment().endOf('month')],
+      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    }
+  };
+  public pickerIndex: number = null;
 
   constructor(private router: Router, private  searchService: SearchService) {
+
+  }
+
+  initObject() {
     // @ts-ignore
     this.searchData = {
       fmcBusiness: 'All',
       language: 'All',
       format: 'All',
-      wercsSubFormat: 'All'
+      wercsSubFormat: 'All',
+      revisionDateFilterType: 'eq',
+      publishDateFilterType: 'eq',
+      productNameCondition: 'value~',
+      revisionDate: moment(new Date()).format(MSDP_DATE_FORMAT),
+      publishDate: moment(new Date()).format(MSDP_DATE_FORMAT),
     };
+    this.optionsRevision.singleDatePicker = true;
+    this.optionsPublish.singleDatePicker = true;
+    this.picker.render();
   }
 
   ngOnInit() {
+    this.initObject();
+  }
 
+  changeCss(type: string) {
+    const cls = document.querySelectorAll('.dropdown-menu');
+    if (this.pickerIndex !== 1) {
+      if (type === 'rev') {
+        cls[0].classList.add('show-visibility');
+      } else {
+        cls[1].classList.add('show-visibility');
+      }
+    } else {
+      cls[this.pickerIndex].classList.add('show-visibility');
+    }
+  }
+
+  selectDateCondition(type?: string, event?: any) {
+    if (type === 'rev') {
+      this.pickerIndex = 1;
+      if (event.target.value === 'range') {
+        this.optionsRevision.singleDatePicker = false;
+      } else {
+        this.optionsRevision.singleDatePicker = true;
+      }
+    } else {
+      this.pickerIndex = 0;
+      if (event.target.value === 'range') {
+        this.optionsPublish.singleDatePicker = false;
+      } else {
+        this.optionsPublish.singleDatePicker = true;
+      }
+    }
+
+    this.picker.render();
   }
 
   goToList() {
+    console.log(this.searchData);
     this.searchService.setSearchData(this.searchData);
     this.closeModal.emit(true);
     this.router.navigate(['list']);
   }
 
   resetFilter() {
-    // @ts-ignore
-    this.searchData = {
-      fmcBusiness: 'All',
-      language: 'All',
-      format: 'All',
-      wercsSubFormat: 'All'
-    };
+    this.initObject();
   }
 
-  public selectedDate(value: any, datepicker?: any, publishedDate?: string) {
-    // this is the date the iser selected
-    console.log(value);
-
-    // any object can be passed to the selected event and it will be passed back here
-    datepicker.start = value.start;
-    datepicker.end = value.end;
-
-    // or manupulat your own internal property
-    this.daterange.start = value.start;
-    this.daterange.end = value.end;
-    this.daterange.label = value.label;
+  public selectedDate(value: any, type?: any) {
+    if (type === 'pub' && this.searchData.publishDateFilterType === 'range') {
+      this.searchData.publishDate = value.picker.startDate.format(MSDP_DATE_FORMAT) + ' - ' + value.picker.endDate.format(MSDP_DATE_FORMAT);
+    }
+    if (type === 'pub' && this.searchData.publishDateFilterType !== 'range') {
+      this.searchData.publishDate = value.picker.startDate.format(MSDP_DATE_FORMAT);
+    }
+    if (type === 'rev' && this.searchData.revisionDateFilterType === 'range') {
+      this.searchData.revisionDate = value.picker.startDate.format(MSDP_DATE_FORMAT) + ' - ' + value.picker.endDate.format(MSDP_DATE_FORMAT);
+    }
+    if (type === 'rev' && this.searchData.revisionDateFilterType !== 'range') {
+      this.searchData.revisionDate = value.picker.startDate.format(MSDP_DATE_FORMAT);
+    }
   }
-
-
 }
+
