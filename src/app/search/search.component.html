@@ -332,7 +332,7 @@
                                [options]="optionsPublish"/>
                       </div>
 
-                      <div class="clr-col-6 clr-col-7 pt-2 custom-checkbox">
+                      <div class="clr-col-md-6 clr-col-7 pt-2 custom-checkbox">
                         <clr-checkbox-wrapper>
                           <input type="checkbox" clrCheckbox value="option1" name="publishdate_last"
                                  [(ngModel)]="searchData.isPublishDays"/>
@@ -362,45 +362,26 @@
           <div class="card">
             <div class="card-header">Product Options</div>
             <div class="card-block min-height">
+
               <div class="clr-row">
-                <div class="clr-col-2">
-                  <label class="clr-form-control">Specification ID</label>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">Product Name</label>
-                </div>
-                <div class="clr-col-2">
-
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">CAS Number</label>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">Chemical Name</label>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">Comman Name</label>
-                </div>
-
-
-              </div>
-              <div class="clr-row">
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
+                    <label class="clr-form-control">Specification ID</label>
                     <input clrInput id="productID" placeholder="Enter a Specification ID" name="productID" type="text"
                            [(ngModel)]="searchData.specificationID">
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">Product Name</label>
                     <input clrInput id="productName" placeholder="Enter a Product Name" name="productName" type="text"
                            [(ngModel)]="searchData.productName">
                   </clr-input-container>
 
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-select-container>
+                    <label class="clr-form-control">&nbsp;</label>
                     <select clrSelect name="productName_option" [(ngModel)]="searchData.productNameCondition">
                       <option value="value~">Start With</option>
                       <option value="~value~">Containing</option>
@@ -408,92 +389,68 @@
                     </select>
                   </clr-select-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">CAS Number</label>
                     <input clrInput type="text" placeholder="Enter a CAS" name="CAS"
                            [(ngModel)]="searchData.casNumber"/>
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">Chemical Name</label>
                     <input clrInput type="text" placeholder="Enter a Chemical Name" name="CHEM"
                            [(ngModel)]="searchData.chemicalName"/>
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">Common Name</label>
                     <input clrInput type="text" placeholder="Enter a Common Name" name="Common"
                            [(ngModel)]="searchData.commonName"/>
                   </clr-input-container>
                 </div>
-
-
               </div>
-              <div class="clr-row">
-                <div class="clr-col-2">
-                  <div class="clr-col-2">
-                    <label class="clr-form-control">Trade Name</label>
-                  </div>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">Alt Commercial Name (s)</label>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">IUPAC</label>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">IN Code</label>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">CAS MAIN</label>
-                </div>
-                <div class="clr-col-2">
-                  <label class="clr-form-control">CMR</label>
-                </div>
 
-              </div>
               <div class="clr-row">
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">Trade Name</label>
                     <input clrInput type="text" placeholder="Enter a Trade Name" name="Trade"
                            [(ngModel)]="searchData.tradeName"/>
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">Alt Commercial Name (s)</label>
                     <input clrInput type="text" placeholder="Enter a Alt Commercial Name" name="Trade"
                            [(ngModel)]="searchData.alternateCommercialName"/>
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">IUPAC</label>
                     <input clrInput type="text" placeholder="Enter a IUPAC Name" name="Trade"
                            [(ngModel)]="searchData.IUPAC"/>
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">IN Code</label>
                     <input clrInput type="text" placeholder="Enter a IN Code Name" name="Trade"
                            [(ngModel)]="searchData.INCODE"/>
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">CAS MAIN</label>
                     <input clrInput type="text" placeholder="Enter a CAS MAIN" name="Trade"
                            [(ngModel)]="searchData.CASMAN"/>
                   </clr-input-container>
                 </div>
-                <div class="clr-col-2">
+                <div class="clr-col-md-2 clr-col-6">
                   <clr-input-container>
-
+                    <label class="clr-form-control">CMR</label>
                     <input clrInput type="text" placeholder="Enter a CMR" name="Trade"
                            [(ngModel)]="searchData.CMR"/>
                   </clr-input-container>

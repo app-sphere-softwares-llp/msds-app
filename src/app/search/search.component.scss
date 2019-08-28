@@ -141,11 +141,17 @@ label {
 }
 .card-header
 {
-  padding: 5px 5px;
+  padding: 5px 10px;
 }
 
 
 @media only screen and (max-width: 768px) {
+  .main-container .content-container .content-area{
+    padding: 10px;
+  }
+  .card-block{
+    padding: 10px;
+  }
   #search-page{
     height: 100%; padding-top: 10px; width: 100%; background: #ffffff;
   }
