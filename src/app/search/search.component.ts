@@ -1,11 +1,10 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import * as moment from 'moment';
 import {ListModelItem} from '../models/listModel';
 import {SearchService} from '../search.service';
 import {DaterangePickerComponent} from 'ng2-daterangepicker';
 
-const MSDP_DATE_FORMAT = 'MM/DD/YYYY';
+const MSDP_DATE_FORMAT = 'MM-DD-YYYY';
 
 @Component({
   selector: 'app-search',
@@ -117,15 +116,12 @@ export class SearchComponent implements OnInit {
   public selectedDate(value: any, type?: any) {
     if (type === 'pub' && this.searchData.publishDateFilterType === 'range') {
       this.searchData.publishDate = value.picker.startDate.format(MSDP_DATE_FORMAT) + ' - ' + value.picker.endDate.format(MSDP_DATE_FORMAT);
-
     }
     if (type === 'pub' && this.searchData.publishDateFilterType !== 'range') {
       this.searchData.publishDate = value.picker.startDate.format(MSDP_DATE_FORMAT);
     }
     if (type === 'rev' && this.searchData.revisionDateFilterType === 'range') {
       this.searchData.revisionDate = value.picker.startDate.format(MSDP_DATE_FORMAT) + ' - ' + value.picker.endDate.format(MSDP_DATE_FORMAT);
-
-
     }
     if (type === 'rev' && this.searchData.revisionDateFilterType !== 'range') {
       this.searchData.revisionDate = value.picker.startDate.format(MSDP_DATE_FORMAT);

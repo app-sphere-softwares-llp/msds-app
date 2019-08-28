@@ -325,7 +325,7 @@ iframe {
   display: block!important;
 }
 .display-none{
-  display: display-none!important;
+  display: none!important;
 }
 
 .daterangepicker .calendar td, .daterangepicker .calendar th {
@@ -454,14 +454,16 @@ clr-modal {
   .modal-dialog {
     width: 100%;
   }
-
+  .modal-body {
+    max-height: 75vh;
+  }
   .modal-dialog .modal-content {
     padding: 0px;
   }
 
   .modal-header {
     padding: 10px;
-
+    border-radius: 0px;
     .modal-title {
       font-size: 16px;
     }

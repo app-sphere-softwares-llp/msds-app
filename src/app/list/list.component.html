@@ -1,22 +1,21 @@
   <div>
     <div class="demo-header">
       <div class="row">
-        <div class="col-4">
+        <div class="col-4 pl-3">
             <pagination *ngIf="filteredItems && filteredItems.length"
-            [itemsPerPage]="25"
-            [totalItems]="items.length"
+            [totalItems]="items.length" [itemsPerPage]="25"
             (pageChanged)="pageChanged($event)"
 ></pagination>
         </div>
         <div class="col-8 text-right">
           <div class="result-count ">
-              <a name="" class="mr-1" (click)="goToHome()">
+              <a name="" href="javascript:void 0" class="text-primary  mr-1" (click)="goToHome()">
                   Home</a> |
-            <a name="" class="mr-1" href="javascript:void 0" (click)="editSearch()">
+            <a name="" class="ml-1 mr-1" href="javascript:void 0" (click)="editSearch()">
               <fa-icon [icon]="faSearch"></fa-icon>
               Modify Search</a> |
 
-              <a name="" class="mr-1" href="javascript:void 0" >
+              <a name="" class="ml-1" href="javascript:void 0" >
                   Total Results: {{items.length}}</a>
 
         </div>
@@ -25,7 +24,7 @@
     </div>
     <section class="table-contents">
 
-      <div *ngIf="showSpinner" class="d-flex flex-column align-items-center">
+      <div *ngIf="showSpinner" class="d-flex flex-column align-items-center" style="margin-top: 150px;">
         <span class="spinner spinner-lg">
           Loading...
         </span>
@@ -132,7 +131,7 @@
           <td class="text-center">{{ item.commercialNames}}</td>
           <td class="text-center">{{ item.validityArea}}</td>
           <td class="text-center">{{ item.validityAreaDescription}}</td>
-          <td class="text-center">{{ item.EHSVersionNo}}</td>
+          <td class="text-center">{{ item.ehsVersionNo}}</td>
 
         </tr>
         </tbody>
@@ -140,8 +139,7 @@
           <tr>
             <td colspan="12">
               <pagination *ngIf="filteredItems && filteredItems.length"
-              [itemsPerPage]="25"
-              [totalItems]="items.length"
+              [totalItems]="items.length" [itemsPerPage]="25"
               (pageChanged)="pageChanged($event)"
   ></pagination>
 </td>
@@ -164,7 +162,7 @@
 
 
 <clr-modal [(clrModalOpen)]="pdfModal" [clrModalClosable]="false" class="pdfViewer">
-  <h4 class="modal-title">{{pdfModalData.productName}}
+  <h4 class="modal-title" *ngIf="pdfModalData && pdfModalData.productName">{{pdfModalData.productName}}
     <clr-icon aria-hidden="true" (click)="cancel()" shape="close"></clr-icon>
   </h4>
   <div class="modal-body p-0">

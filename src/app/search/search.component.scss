@@ -63,7 +63,8 @@ label {
   margin: auto;
   border: 1px solid #ef6d5c;
   font-size: 10px;
-  left: calc(50% - 15px);
+  left: calc(50% - 13px);
+  margin-top: calc(50% - 13px);
 }
 
 .footer{
@@ -169,5 +170,8 @@ label {
     .clr-select, .clr-input, .clr-input-group{
       width: 120px!important;
     }
+  }
+  .or{
+    margin-top: 0px;
   }
 }
