@@ -66,6 +66,7 @@
 body {
   font-family: Lato;
   margin: 0px;
+  background: #f7f8fa;
 }
 
 body.help {
@@ -105,19 +106,35 @@ hr {
 }
 
 .table td, .table th {
-  padding: 1.5px 5px !important;
-  border: 1px solid #bfbfbf !important;
-  font-size: 14px !important;
+  padding: 5px 5px !important;
+  font-size: 13px !important;
+  border: 1px solid #b5b5b5!important;
+  position: relative;
+
 }
 
 .table th {
-  background: #ff6f5e !important;
-  color: #ffffff !important;
-  border-bottom-color: #ff6f5e !important;
-  border-top-color: #ff6f5e !important;
   padding: 3px 6px !important;
   font-weight: bold !important;
+  background: #e5e5e5;
 }
+
+.modal-header {
+  position: relative;
+  background: #525252;
+}
+
+.modal-header .modal-title {
+  color: #fff;
+}
+
+a:active, a:hover {
+  color: #337ab7;
+  text-decoration: none;
+
+
+}
+
 
 /************************************************\
 	General pattern styles
@@ -464,5 +481,15 @@ clr-modal {
   .modal-dialog {
     max-width: 750px;
   }
+}
+
+.clr-select {
+  width: 100% !important;
+}
+
+.main-container {
+
+  height: 100%;
+
 }
 

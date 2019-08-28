@@ -6,6 +6,7 @@ import {ResultService} from '../services/api/result.service';
 import {PdfJsViewerComponent} from 'ng2-pdfjs-viewer';
 import {mockPdf} from '../models/mockdata';
 import {SearchService} from '../search.service';
+import {Router} from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
@@ -32,30 +33,33 @@ export class ListComponent implements OnInit {
   title: string;
   base64 = mockPdf;
 
-  constructor(private modalService: BsModalService, private resultService: ResultService, private  searchService: SearchService) {
+  constructor(private router: Router,private modalService: BsModalService, private resultService: ResultService, private  searchService: SearchService) {
   }
 
-  ngOnInit() {
-    // this.filteredItems = this.items.slice(0, 20);
+  getFilteredData(){
     this.getAll();
     this.searchService.getSearchData().subscribe(v => {
       this.searchData = v;
-      const allowedFilterCols = ['productName', 'wercsSubFormat', 'language', 'publishDate', 'revisionDate', 'specificationID'];
+      const allowedFilterCols = ['productName', 'commonName', 'tradeName', 'wercsSubFormat', 'language', 'publishDate', 'revisionDate', 'specificationID'];
       this.filteredItems = this.items.filter((item) => {
         const resArr = [];
         Object.keys(v).filter(f => allowedFilterCols.includes(f)).forEach(key => {
           // for date related things
-          if (key === 'publishDate' || key === 'revisionDate') {
+          if ((key === 'publishDate' && v.publishDate) || (key === 'revisionDate' && v.revisionDate)) {
             const filterType = v[`${key}FilterType`];
             switch (filterType) {
               case 'eq':
-                resArr.push(moment(item[key], 'YYYY/MM/DD').isSame(moment(v[key], 'MM-DD-YYYY')));
+                resArr.push(moment(item[key], 'YYYY-MM-DD').isSame(moment(v[key], 'MM-DD-YYYY')));
                 break;
               case 'gteq':
-                resArr.push(moment(item[key], 'DD-MM-YYYY').isSameOrAfter(moment(v[key], 'DD-MM-YYYY')));
+                resArr.push(moment(item[key], 'YYYY-MM-DD').isSameOrAfter(moment(v[key], 'MM-DD-YYYY')));
                 break;
               case 'lt':
-                resArr.push(moment(item[key], 'DD-MM-YYYY').isSameOrBefore(moment(v[key], 'DD-MM-YYYY')));
+                resArr.push(moment(item[key], 'YYYY-MM-DD').isSameOrBefore(moment(v[key], 'MM-DD-YYYY')));
+                break;
+              case 'range':
+                let strArray  =   v.revisionDate.toString().split('-');
+                resArr.push(moment(item[key], 'YYYY-MM-DD').isBetween(moment(strArray[0].trim(), 'MM-DD-YYYY'), moment(strArray[1].trim(), 'MM-DD-YYYY')));
                 break;
               default:
                 resArr.push(false);
@@ -81,6 +85,11 @@ export class ListComponent implements OnInit {
     });
   }
 
+  ngOnInit() {
+    // this.filteredItems = this.items.slice(0, 20);
+    this.getFilteredData();
+  }
+
   pageChanged(event: PageChangedEvent) {
     const startIndex = (event.page - 1) * 20;
     const endIndex = Math.min(startIndex + 20 - 1, this.items.length - 1);
@@ -93,15 +102,22 @@ export class ListComponent implements OnInit {
     this.pdfModalData = item;
     // this.bsModalRef = this.modalService.show(ItemDetailsComponent, {class: 'modal-lg'});
     // this.bsModalRef.content.title = item.productName;
-    this.viewPDF(showInNewTab);
+    this.viewPDF(showInNewTab, item);
   }
 
-  viewPDF(isNewTab: boolean): void {
+  viewPDF(isNewTab: boolean, item: ListModelItem): void {
+
     const blob: Blob = this.base64ToBlob(this.base64, 'application/pdf', 512);
-    this.pdfViewer.pdfSrc = blob;
+    this.pdfViewer.pdfSrc = '/assets/' + item.pdfName;
     this.pdfViewer.showSpinner = true;
     this.pdfViewer.externalWindow = isNewTab;
     this.pdfViewer.refresh();
+  }
+
+  openPDF(isNewTab: boolean, item: ListModelItem): void {
+
+    window.open('../../assets/' + item.pdfName , '_blank');
+
   }
 
   base64ToBlob(b64Data, contentType, sliceSize) {
@@ -130,6 +146,10 @@ export class ListComponent implements OnInit {
     this.searchEditModal = true;
   }
 
+  goToHome() {
+    this.router.navigate(['search']);
+  }
+
   /**
    * Close the modal and reset error states
    */
@@ -154,7 +174,9 @@ export class ListComponent implements OnInit {
 
   public _MODES: Array<string> = ['push'];
   public _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
-
+  public self = [ { field: 'name', title: 'Name', show: true },
+  { field: 'age', title: 'Age', show: true },
+  { field: 'money', title: 'Money', show: true }];
   public _toggleOpened(): void {
     this._opened = !this._opened;
   }

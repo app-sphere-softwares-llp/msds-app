@@ -2,19 +2,41 @@
   padding: 0px 10px;
 }
 .table td, .table th {
-    padding: 3px;
-    font-size: 14px;
+    padding: 5px;
+    font-size: 13px;
     vertical-align: top;
     border-top: 1px solid #dddddd!important;
     font-size: small;
+
 }
-.table th{
-  background-color: #ff6f5e;
-  color: #ffffff;
+
+.table>thead>tr>th {
+  background: #e5e5e5;
+  color: #262626;
+  border: 0;
+  text-transform: capitalize;
 }
+
 table{
     border: none;
     border-collapse: collapse;
+}
+
+.table{
+  margin-top: 7px;
+}
+label {
+
+  margin-bottom: 0;
+}
+
+.dropdown-menu .dropdown-divider {
+  border-bottom: 1px solid #ededed;
+  margin: 1px 0;
+}
+
+.dropdown-menu .btn, .dropdown-menu .dropdown-item {
+  padding-left: 11px;
 }
 
 .result-count{
@@ -25,4 +47,8 @@ table{
   a{
     font-weight: normal;
   }
+}
+
+.row {
+  margin-right: 0px;
 }

@@ -3,7 +3,7 @@
 }
 
 .min-height{
-  min-height: 230px;
+  min-height: 151px;
 }
 .filter-content{
   padding: 0px 10px;
@@ -16,23 +16,8 @@
   height: 26px;
   width: 100%;
 }
-h4.header{
-  padding: 12px 10px 11px;
-  background-color: #ff6f5e;
-  color: #ffffff;
-  font-size: 13px;
-  text-transform: uppercase;
-  font-weight: bold;
-  box-shadow: 2px 2px 2px #d0d0d0;
-}
-h5.header{
-  padding: 6px 10px 5px;
-  background-color: #ebecec;
-  margin: 0px 0px 0px 0px;
-  color: #ff6f5e;
-  font-size: 12px;
-  font-weight: bold;
-}
+
+
 label {
   display: inline-block;
   margin-bottom: 0px;
@@ -146,6 +131,16 @@ label {
     width: 160px;
     display: inline-block;
   }
+}
+.card-header, .card-title {
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+.card-header
+{
+  padding: 5px 5px;
 }
 
 

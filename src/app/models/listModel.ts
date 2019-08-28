@@ -65,4 +65,10 @@ export class ListModelItem {
   revisionDays: number;
   publishDays: number;
   productNameCondition: string;
+  alternateCommercialName: string;
+  IUPAC: string;
+  INCODE: string;
+  CASMAN: string;
+  CMR: string;
+
 }

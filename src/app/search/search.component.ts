@@ -24,32 +24,19 @@ export class SearchComponent implements OnInit {
 
 
   public searchData: ListModelItem;
+
   public optionsRevision: any = {
     locale: {format: MSDP_DATE_FORMAT},
     alwaysShowCalendars: false,
     singleDatePicker: false,
     selector: 'rev',
-    ranges: {
-      Today: [moment(), moment()],
-      Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month': [moment().startOf('month'), moment().endOf('month')],
-      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    }
+    showDropdowns: true,
   };
   public optionsPublish: any = {
     locale: {format: MSDP_DATE_FORMAT},
     alwaysShowCalendars: false,
     singleDatePicker: false,
-    ranges: {
-      Today: [moment(), moment()],
-      Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-      'This Month': [moment().startOf('month'), moment().endOf('month')],
-      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    }
+    showDropdowns: true,
   };
   public pickerIndex: number = null;
 
@@ -67,8 +54,12 @@ export class SearchComponent implements OnInit {
       revisionDateFilterType: 'eq',
       publishDateFilterType: 'eq',
       productNameCondition: 'value~',
-      revisionDate: moment(new Date()).format(MSDP_DATE_FORMAT),
-      publishDate: moment(new Date()).format(MSDP_DATE_FORMAT),
+      revisionDate: '',
+      publishDate: '',
+      revisionDays: 15,
+      publishDays: 15
+
+
     };
     this.optionsRevision.singleDatePicker = true;
     this.optionsPublish.singleDatePicker = true;
@@ -126,12 +117,15 @@ export class SearchComponent implements OnInit {
   public selectedDate(value: any, type?: any) {
     if (type === 'pub' && this.searchData.publishDateFilterType === 'range') {
       this.searchData.publishDate = value.picker.startDate.format(MSDP_DATE_FORMAT) + ' - ' + value.picker.endDate.format(MSDP_DATE_FORMAT);
+
     }
     if (type === 'pub' && this.searchData.publishDateFilterType !== 'range') {
       this.searchData.publishDate = value.picker.startDate.format(MSDP_DATE_FORMAT);
     }
     if (type === 'rev' && this.searchData.revisionDateFilterType === 'range') {
       this.searchData.revisionDate = value.picker.startDate.format(MSDP_DATE_FORMAT) + ' - ' + value.picker.endDate.format(MSDP_DATE_FORMAT);
+
+
     }
     if (type === 'rev' && this.searchData.revisionDateFilterType !== 'range') {
       this.searchData.revisionDate = value.picker.startDate.format(MSDP_DATE_FORMAT);

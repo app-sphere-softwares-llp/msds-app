@@ -1,52 +1,24 @@
-<ng-sidebar-container
-  (onBackdropClicked)="_onBackdropClicked()" style="height: calc(100vh - 85px);">
-  <!--      <ng-sidebar-->
-  <!--        [(opened)]="_opened"-->
-  <!--        [mode]="_MODES[_modeNum]"-->
-  <!--        [keyClose]="_keyClose"-->
-  <!--        [position]="_POSITIONS[_positionNum]"-->
-  <!--        [dock]="_dock"-->
-  <!--        [dockedSize]="'50px'"-->
-  <!--        [autoCollapseHeight]="_autoCollapseHeight"-->
-  <!--        [autoCollapseWidth]="_autoCollapseWidth"-->
-  <!--        [closeOnClickOutside]="_closeOnClickOutside"-->
-  <!--        [closeOnClickBackdrop]="_closeOnClickBackdrop"-->
-  <!--        [showBackdrop]="_showBackdrop"-->
-  <!--        [animate]="_animate"-->
-  <!--        [trapFocus]="_trapFocus"-->
-  <!--        [autoFocus]="_autoFocus"-->
-  <!--        [sidebarClass]="'demo-sidebar'"-->
-  <!--        [ariaLabel]="'My sidebar'"-->
-  <!--        (onOpenStart)="_onOpenStart()"-->
-  <!--        (onOpened)="_onOpened()"-->
-  <!--        (onCloseStart)="_onCloseStart()"-->
-  <!--        (onClosed)="_onClosed()"-->
-  <!--        (onTransitionEnd)="_onTransitionEnd()">-->
-
-  <!--&lt;!&ndash;        <button class="demo-control" (click)="_toggleOpened()">Close sidebar</button>&ndash;&gt;-->
-  <!--&lt;!&ndash;        <p><a closeSidebar>This will close the sidebar too</a></p>&ndash;&gt;-->
-
-
-  <!--        <app-search [isMobile]="isMobile"></app-search>-->
-
-
-  <!--      </ng-sidebar>-->
-  <div ng-sidebar-content>
+  <div>
     <div class="demo-header">
       <div class="row">
         <div class="col-4">
-          <!--              <button (click)="_toggleOpened()" class="btn btn"> <fa-icon [icon]="faBars"></fa-icon>-->
-          <!--                <span>&ensp;Results</span>-->
-          <!--              </button>-->
-          <span>&ensp;Results</span>
+            <pagination *ngIf="filteredItems && filteredItems.length"
+            [itemsPerPage]="25"
+            [totalItems]="items.length"
+            (pageChanged)="pageChanged($event)"
+></pagination>
         </div>
         <div class="col-8 text-right">
           <div class="result-count ">
+              <a name="" class="mr-1" (click)="goToHome()">
+                  Home</a> |
             <a name="" class="mr-1" href="javascript:void 0" (click)="editSearch()">
               <fa-icon [icon]="faSearch"></fa-icon>
-              Modify Search</a>
-            <span *ngIf="filteredItems && filteredItems.length"
-                  class="uppercase">Total Results: {{filteredItems.length}}</span></div>
+              Modify Search</a> |
+
+              <a name="" class="mr-1" href="javascript:void 0" >
+                  Total Results: {{items.length}}</a>
+
         </div>
       </div>
 
@@ -60,38 +32,80 @@
       </div>
 
       <h2 class="no-data" *ngIf="filteredItems && filteredItems.length===0 && !showSpinner">No Data Found</h2>
+      <!-- <div>
+          <clr-dropdown clrPosition="bottom-left" [clrCloseMenuOnItemClick]="false" title="Select Columns to Display">
+              <button clrDropdownTrigger aria-label="Dropdown demo button">
+                  <clr-icon shape="view-list" size="24"></clr-icon>
 
-      <pagination *ngIf="filteredItems && filteredItems.length"
-                  [itemsPerPage]="25"
-                  [totalItems]="items.length"
-                  (pageChanged)="pageChanged($event)"
-      ></pagination>
-
+              </button>
+              <clr-dropdown-menu *clrIfOpen>
+                  <label class="dropdown-header" aria-hidden="true">Select Columns</label>
+<div class="dropdown-divider"></div>
+                  <div clrDropdownItem>
+                    <clr-checkbox-wrapper>
+                      <input type="checkbox" clrCheckbox value="option1" name="options" />
+                      <label>Option 1</label>
+                    </clr-checkbox-wrapper>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                    <div clrDropdownItem>
+                        <clr-checkbox-wrapper>
+                      <input type="checkbox" clrCheckbox value="option2" name="options" />
+                      <label>Option 2</label>
+                    </clr-checkbox-wrapper>
+                    </div>
+              </clr-dropdown-menu>
+          </clr-dropdown>
+      </div> -->
       <table width="100%" class="table" *ngIf="filteredItems && filteredItems.length">
         <thead>
+
         <tr class="">
           <th width="5%" class="text-center">
             Action
           </th>
-          <th width="10%" align="left">
-            Product ID
+          <th width="8%" align="left">
+            Specification ID
           </th>
-          <th width="35%" align="left">
+          <th width="10%" align="left">
             Product Name
           </th>
-          <th width="15%" align="left">
+          <th width="6%" align="left">
             Sub Format
           </th>
-          <th width="10%" class="text-center">
+          <th width="5%" class="text-center">
             Language
           </th>
-          <th width="10%" class="text-center">
+          <th width="9%" class="text-center">
             Published Date
           </th>
-          <th width="10%" class="text-center">
+          <th width="9%" class="text-center">
             Revision Date
           </th>
-
+          <th width="9%" class="text-center">
+            CAS Number
+          </th>
+          <th width="9%" class="text-center">
+              Chemical Name (s)
+          </th>
+          <th width="9%" class="text-center">
+              Common Name (s)
+          </th>
+          <th width="7%" class="text-center">
+              Trade Name (s)
+          </th>
+          <th width="13%" class="text-center">
+              Alternate Commercial Name
+          </th>
+          <th width="13%" class="text-center">
+              Validity Area
+          </th>
+          <th width="13%" class="text-center">
+              Validity Area Description
+          </th>
+          <th width="13%" class="text-center">
+              EHS Version No
+          </th>
         </tr>
         </thead>
         <tbody>
@@ -99,24 +113,44 @@
         <tr class="altitem" *ngFor="let item of filteredItems;let i = index">
           <!-- <td>{{ item.fmcBusiness }}</td> -->
           <td style="text-align: center">
-            <a href="javascript: void 0" (click)="openModal(item)">
-              <img src="../../msds/assets/pdf.png" height="15"></a>
+            <a href="javascript: void 0" (click)="openModal(item, false)">
+              <img src="../../assets/pdf.png" height="15"></a>
           </td>
           <td>
-            <a href="javascript: void 0" (click)="openModal(item, true)">{{item.specificationID}}</a>
+            <a href="javascript: void 0" (click)="openPDF(true,item)">{{item.specificationID}}</a>
           </td>
+
           <td>{{ item.productName }}</td>
           <td>{{ item.wercsSubFormat }}</td>
           <td class="text-center">{{ item.language }}</td>
-          <td class="text-center">{{ item.publishDate | date :'MM-dd-yyyy' }}</td>
-          <td class="text-center">{{ item.revisionDate | date :'MM-dd-yyyy' }}</td>
+          <td class="text-center">{{ item.publishDate | date }}</td>
+          <td class="text-center">{{ item.revisionDate | date }}</td>
+          <td class="text-center">{{ item.casNumber  }}</td>
+          <td class="text-center">{{ item.chemicalName  }}</td>
+          <td class="text-center">{{ item.commonName }}</td>
+          <td class="text-center">{{ item.tradeName}}</td>
+          <td class="text-center">{{ item.commercialNames}}</td>
+          <td class="text-center">{{ item.validityArea}}</td>
+          <td class="text-center">{{ item.validityAreaDescription}}</td>
+          <td class="text-center">{{ item.EHSVersionNo}}</td>
 
         </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="12">
+              <pagination *ngIf="filteredItems && filteredItems.length"
+              [itemsPerPage]="25"
+              [totalItems]="items.length"
+              (pageChanged)="pageChanged($event)"
+  ></pagination>
+</td>
+          </tr>
+        </tfoot>
       </table>
     </section>
   </div>
-</ng-sidebar-container>
+<!-- </ng-sidebar-container> -->
 
 
 <clr-modal [(clrModalOpen)]="searchEditModal" [clrModalClosable]="false">
